@@ -1,0 +1,219 @@
+@import "./base/varibale.scss";
+@import "./base/breakPoint.scss";
+
+.container {
+  display: flex;
+  align-items: center;
+  padding: 1em;
+  position: relative;
+
+  .sec1 {
+    flex: 1;
+    display: flex;
+    align-items: center;
+
+    .logo {
+      width: 120px;
+      height: fit-content;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    .searchBox {
+      position: relative;
+      flex: 1;
+      margin-left: 3em;
+      display: none;
+
+      input {
+        padding: 0.5em;
+        padding-right: 4em;
+        border-radius: 8px;
+        font-size: $text-base;
+        border: 2px solid #545f7d68;
+        width: 100%;
+        outline: none;
+      }
+
+      span {
+        position: absolute;
+        right: 0;
+        height: 100%;
+        background-color: $secondary-color;
+        border-radius: 0px 8px 8px 0px;
+        display: flex;
+        align-items: center;
+        top: 0;
+        padding: 0px 1em;
+
+        svg {
+          color: white;
+        }
+      }
+
+      @include screen-sm(600px) {
+        display: block;
+        margin-right: 3em;
+      }
+    }
+  }
+
+  .sec2 {
+    display: flex;
+    align-items: center;
+
+    > * {
+      margin: 0px 0.5em;
+    }
+    .ellipsisVerticalIcon {
+      cursor: pointer;
+
+      svg {
+        color: $primary-color;
+      }
+
+      @include screen-lg {
+        display: none;
+      }
+    }
+
+    .NavHamburger {
+      cursor: pointer;
+
+      span {
+        display: block;
+        margin: 0.5em 0px;
+        width: 20px;
+        height: 4px;
+        border-radius: 1.5rem;
+        background-color: $primary-color;
+
+        &:nth-child(1) {
+          width: 1.25rem;
+        }
+        &:nth-child(2) {
+          width: 2rem;
+        }
+        &:nth-child(3) {
+          width: 1.25rem;
+        }
+      }
+
+      @include screen-lg {
+        display: none;
+      }
+    }
+  }
+
+  .sec3 {
+    user-select: none;
+    position: absolute;
+    background-color: $sec1-color;
+    width: fit-content;
+    height: max-content;
+    right: 32px;
+    top: 57px;
+    display: none;
+    grid-template-rows: auto auto auto;
+    row-gap: 5px;
+    border-radius: 8px;
+    color: $primary-color;
+    font-weight: 600;
+
+    &.sec3Open {
+      display: grid;
+    }
+
+    > * {
+      padding: 1em;
+      cursor: pointer;
+
+      &:hover {
+        background-color: white;
+      }
+    }
+
+    > a {
+      color: $primary-color;
+      text-decoration: none;
+
+      @include screen-lg {
+        text-decoration: underline;
+      }
+    }
+
+    .bellIcon {
+      display: grid;
+      grid-template-columns: auto auto;
+      align-items: center;
+
+      small {
+        font-size: $text-base;
+        @include screen-lg {
+          display: none;
+        }
+      }
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      > span {
+        display: block;
+        border-radius: 50%;
+        margin-right: 0.5em;
+
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+        }
+      }
+
+      > div {
+        display: flex;
+        align-items: center;
+
+        span {
+          margin-right: 0.5em;
+          font-weight: 600;
+        }
+      }
+
+      .userInfo {
+        display: none;
+        position: absolute;
+        background-color: $sec1-color;
+        width: fit-content;
+        height: max-content;
+        padding: 1em;
+        border-radius: 8px;
+        top: 66px;
+        right: 9px;
+
+        &:hover {
+          background-color: white;
+        }
+      }
+    }
+
+    @include screen-lg {
+      display: grid !important;
+      position: static;
+      grid-template-columns: auto auto auto;
+      row-gap: 0;
+      column-gap: 40px;
+      align-items: center;
+      background-color: white;
+      > * {
+        padding: 0em;
+      }
+    }
+  }
+}
