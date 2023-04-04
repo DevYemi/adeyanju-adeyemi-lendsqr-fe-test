@@ -37,7 +37,7 @@
       }
     }
 
-    @include lg {
+    @include screen-lg {
       display: grid;
     }
   }
@@ -128,7 +128,7 @@
       }
     }
 
-    @include lg {
+    @include screen-lg {
       max-width: 100%;
       padding: 3em 8em;
     }
