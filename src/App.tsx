@@ -1,11 +1,20 @@
-import { useState } from 'react'
 import "@/styles/global.scss"
-import LoginPage from './pages/LoginPage'
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router-dom";
+
+import GetRoutes from './utils/routes';
 
 function App() {
 
+  const router = createBrowserRouter(
+    createRoutesFromElements(GetRoutes())
+  );
+
   return (
-    <LoginPage />
+    <RouterProvider router={router} />
   )
 }
 
