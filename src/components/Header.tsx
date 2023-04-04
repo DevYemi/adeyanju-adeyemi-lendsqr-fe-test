@@ -2,8 +2,7 @@ import React, { useRef, useState } from 'react'
 import styles from "@/styles/header.module.scss"
 import companyLogo from "@/assets/imgs/logo.svg"
 import avatarImg from "@/assets/imgs/avatar.png"
-import BellIcon from './icons/BellIcon'
-import ArrowDown from './icons/ArrowDown'
+import { BellIcon, ArrowDownIcon } from './icons'
 import { EllipsisVerticalIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline"
 import gsap from "gsap"
 
@@ -87,7 +86,7 @@ function Header() {
                         </span>
                         <div>
                             <span>Ayodeji</span>
-                            <ArrowDown />
+                            <ArrowDownIcon />
                         </div>
 
                         <div ref={userInfoRef} className={styles.userInfo}>
