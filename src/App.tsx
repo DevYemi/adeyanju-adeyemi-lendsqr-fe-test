@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import "@/styles/App.scss"
+import "@/styles/global.scss"
+import LoginPage from './pages/LoginPage'
 
 function App() {
 
   return (
-    <div className="App">
-      HELLO WORLD
-    </div>
+    <LoginPage />
   )
 }
 

@@ -1,0 +1,136 @@
+@import "./base/varibale.scss";
+@import "./base/breakPoint.scss";
+
+.wrapper {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  //   align-content: center;
+
+  > section:nth-child(1) {
+    flex: 1;
+    display: none;
+    grid-template-rows: auto auto;
+    padding: 3em 6em;
+    // height: fit-content;
+    background-color: $sec1-color;
+
+    .logo {
+      width: 173px;
+      > img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    .illusration {
+      width: 100%;
+      > img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    @include lg {
+      display: grid;
+    }
+  }
+
+  > section:nth-child(2) {
+    flex: 1;
+    padding: 3em;
+    align-self: center;
+    max-width: 500px;
+    > div {
+      margin-bottom: 5em;
+      h1 {
+        font-size: $text-base * 3;
+        color: $primary-color;
+        margin-bottom: 0.2em;
+        font-weight: 700;
+      }
+      p {
+        font-weight: lighter;
+        color: $primary-color;
+        font-size: $text-lg;
+      }
+    }
+
+    > form {
+      display: grid;
+      grid-template-rows: repeat(auto-fill, minmax(auto, auto));
+      gap: 20px;
+      div {
+        &:nth-child(2) {
+          position: relative;
+
+          div {
+            display: flex;
+            align-items: center;
+            input {
+              padding-right: 4em;
+            }
+            p {
+              position: absolute;
+              right: 10px;
+              color: $secondary-color;
+              text-transform: uppercase;
+            }
+          }
+        }
+        input {
+          width: 100%;
+          border: 1px solid gray;
+          border-radius: 5px;
+          padding: 1.2em;
+          font-size: $text-base;
+
+          &.inputError {
+            border: 1px solid red;
+          }
+
+          &:focus {
+            outline-color: $secondary-color;
+          }
+        }
+
+        > small {
+          color: red;
+        }
+      }
+
+      p {
+        text-transform: uppercase;
+        color: $secondary-color;
+        cursor: pointer;
+        font-weight: 600;
+      }
+
+      button {
+        padding: 1em;
+        background-color: $secondary-color;
+        outline: none;
+        border-radius: 8px;
+        border: none;
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+
+        &:hover {
+          background-color: lighten($color: $secondary-color, $amount: 10);
+        }
+      }
+    }
+
+    @include lg {
+      max-width: 100%;
+      padding: 3em 8em;
+    }
+  }
+}
