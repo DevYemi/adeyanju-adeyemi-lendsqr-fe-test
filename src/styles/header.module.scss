@@ -1,10 +1,9 @@
-@import "./base/varibale.scss";
-@import "./base/breakPoint.scss";
+@import "./base/index.scss";
 
 .container {
   display: flex;
   align-items: center;
-  padding: 1em;
+  padding: 1em 2em;
   position: relative;
 
   .sec1 {
