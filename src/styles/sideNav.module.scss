@@ -10,7 +10,7 @@
     li {
       a {
         display: flex;
-        padding: 1em 2em;
+        padding: 1em;
         opacity: 0.7;
         text-decoration: none;
         color: $primary-color;
@@ -36,16 +36,21 @@
 
         &.active {
           opacity: 1;
+          background-color: #f3fcfc;
         }
 
         &:hover {
           opacity: 1;
+          background-color: #f3fcfc;
           &::before {
             transform: scaleY(1);
           }
         }
 
         @include spacing-x(0.3em);
+        @include screen-md {
+          padding: 1em 2em;
+        }
       }
     }
   }

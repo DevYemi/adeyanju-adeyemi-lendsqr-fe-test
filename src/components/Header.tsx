@@ -10,6 +10,7 @@ function Header() {
     const [isSideNavOpen, setIsSideNavOpen] = useState(false);
     const sec3Ref = useRef<HTMLDivElement | null>(null);
     const userInfoRef = useRef<HTMLDivElement | null>(null);
+    const searchBoxRef = useRef<HTMLDivElement | null>(null);
 
     const animateHamburger = (shouldOpen: boolean) => {
         const hamburger = document.querySelector('#Nav-hamburger') as HTMLDivElement;
@@ -38,11 +39,29 @@ function Header() {
         setIsSideNavOpen(shouldOpen)
     }
 
-    const displayHeaderContent = (el: HTMLElement | null, newDisplay: string) => {
-        if (el) {
-            const currentDisplayValue = el.style.display;
-            el.style.display = currentDisplayValue === newDisplay ? "none" : newDisplay
+    const displayHeaderContent = (el: HTMLElement | null) => {
+        if (el?.classList.contains("opened")) {
+            gsap.to(el,
+                {
+                    translateY: "-20px",
+                    autoAlpha: 0,
+                    onComplete: () => { el?.classList.remove("opened") }
+                },
+            )
+        } else {
+            gsap.fromTo(el,
+                {
+                    translateY: "-20px",
+                    autoAlpha: 0
+                },
+                {
+                    translateY: "0px",
+                    autoAlpha: 1,
+                    onComplete: () => { el?.classList.add("opened") }
+                }
+            )
         }
+
 
     }
     return (
@@ -52,7 +71,7 @@ function Header() {
                     <div className={styles.logo}>
                         <img src={companyLogo} alt="company-logo" />
                     </div>
-                    <div className={styles.searchBox}>
+                    <div ref={searchBoxRef} className={styles.searchBox}>
                         <input type="text" />
                         <span>
                             <MagnifyingGlassIcon width={24} height={24} />
@@ -60,6 +79,9 @@ function Header() {
                     </div>
                 </section>
                 <section className={styles.sec2}>
+                    <span onClick={() => displayHeaderContent(searchBoxRef.current)} className={styles.searchIcon}>
+                        <MagnifyingGlassIcon width={24} height={24} />
+                    </span>
                     <div
                         id='Nav-hamburger'
                         className={styles.NavHamburger}
@@ -68,7 +90,7 @@ function Header() {
                         <span />
                         <span />
                     </div>
-                    <span onClick={() => displayHeaderContent(sec3Ref.current, "grid")} className={styles.ellipsisVerticalIcon}>
+                    <span onClick={() => displayHeaderContent(sec3Ref.current)} className={styles.ellipsisVerticalIcon}>
                         <EllipsisVerticalIcon width={24} height={24} />
                     </span>
                 </section>
@@ -80,7 +102,7 @@ function Header() {
                         <small>Notification</small>
                     </span>
 
-                    <div onClick={() => displayHeaderContent(userInfoRef.current, "block")} className={styles.user}>
+                    <div onClick={() => displayHeaderContent(userInfoRef.current)} className={styles.user}>
                         <span>
                             <img src={avatarImg} alt="avatar" />
                         </span>
