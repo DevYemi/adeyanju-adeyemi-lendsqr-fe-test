@@ -1,0 +1,70 @@
+@import "./base/index.scss";
+
+.container {
+  color: $primary-color;
+  font-size: $text-base;
+  padding: 2em 0px;
+  @include spacing-y(2em);
+
+  ul {
+    li {
+      a {
+        display: flex;
+        padding: 1em 2em;
+        opacity: 0.7;
+        text-decoration: none;
+        color: $primary-color;
+        position: relative;
+        align-items: center;
+        @include spacing-x(0.3em);
+
+        &::before {
+          content: "";
+          position: absolute;
+          transform: scaleY(0);
+          top: 0;
+          left: 0;
+          width: 3px;
+          height: 100%;
+          background-color: $secondary-color;
+          transition: all 250ms ease-in;
+        }
+
+        &.active::before {
+          transform: scaleY(1);
+        }
+
+        &.active {
+          opacity: 1;
+        }
+
+        &:hover {
+          opacity: 1;
+          &::before {
+            transform: scaleY(1);
+          }
+        }
+
+        @include spacing-x(0.3em);
+      }
+    }
+  }
+  > ul {
+    @include spacing-y(2em);
+  }
+
+  div {
+    @include spacing-y(1.5em);
+
+    p {
+      color: $sec2-color;
+      font-size: $text-xs;
+      text-transform: uppercase;
+      padding: 0px 2em;
+    }
+
+    ul {
+      @include spacing-y(1em);
+    }
+  }
+}

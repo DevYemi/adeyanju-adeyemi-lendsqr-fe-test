@@ -12,7 +12,10 @@ function Dashboard() {
                     <SideNav />
                 </section>
                 <section className={styles.sec2}>
-                    <Outlet />
+                    <div className={styles.sec2Container}>
+                        <Outlet />
+                    </div>
+
                 </section>
             </main>
         </div>
