@@ -5,9 +5,13 @@ import avatarImg from "@/assets/imgs/avatar.png"
 import { BellIcon, ArrowDownIcon } from './icons'
 import { EllipsisVerticalIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline"
 import gsap from "gsap"
+import { useAppSelector } from '@/redux-toolkit/hooks'
+import { useDispatch } from 'react-redux'
+import { toggleSideNavVisibility } from '@/redux-toolkit/features/sideNavVisibility'
 
 function Header() {
-    const [isSideNavOpen, setIsSideNavOpen] = useState(false);
+    const { isOpen: isSideNavOpen } = useAppSelector(state => state.sideNavVisibility);
+    const dispatch = useDispatch()
     const sec3Ref = useRef<HTMLDivElement | null>(null);
     const userInfoRef = useRef<HTMLDivElement | null>(null);
     const searchBoxRef = useRef<HTMLDivElement | null>(null);
@@ -36,7 +40,7 @@ function Header() {
                 })
         }
 
-        setIsSideNavOpen(shouldOpen)
+        dispatch(toggleSideNavVisibility(shouldOpen))
     }
 
     const displayHeaderContent = (el: HTMLElement | null) => {
@@ -72,7 +76,7 @@ function Header() {
                         <img src={companyLogo} alt="company-logo" />
                     </div>
                     <div ref={searchBoxRef} className={styles.searchBox}>
-                        <input type="text" />
+                        <input placeholder='Search for anything' type="text" />
                         <span>
                             <MagnifyingGlassIcon width={24} height={24} />
                         </span>

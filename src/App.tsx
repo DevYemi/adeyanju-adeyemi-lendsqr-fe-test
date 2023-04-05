@@ -4,6 +4,8 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from "react-router-dom";
+import { store } from './redux-toolkit/store';
+import { Provider } from 'react-redux';
 
 import GetRoutes from './utils/routes';
 
@@ -14,7 +16,9 @@ function App() {
   );
 
   return (
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   )
 }
 
