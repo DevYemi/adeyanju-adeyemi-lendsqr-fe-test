@@ -44,7 +44,7 @@ function SideNav() {
                 </li>
             </ul>
             <div className={styles.customer}>
-                <p>Customers</p>
+                <p>customers</p>
                 <ul className={styles.list2}>
                     <li>
                         <NavLink to={"/users"} className={({ isActive }) => isActive ? styles.active : ""}>
@@ -97,7 +97,7 @@ function SideNav() {
                 </ul>
             </div>
             <div className={styles.business}>
-                <p>Business</p>
+                <p>business</p>
                 <ul className={styles.list3}>
                     <li>
                         <NavLink to={"/organisation"} className={({ isActive }) => isActive ? styles.active : ""}>
@@ -156,7 +156,7 @@ function SideNav() {
                 </ul>
             </div>
             <div className={styles.settings}>
-                <p>Settings</p>
+                <p>settings</p>
                 <ul className={styles.list4}>
                     <li>
                         <NavLink to={"/preferences"} className={({ isActive }) => isActive ? styles.active : ""}>

@@ -52,10 +52,10 @@
         font-size: $text-base * 3;
         color: $primary-color;
         margin-bottom: 0.2em;
-        font-weight: 700;
+        font-weight: 800;
       }
       p {
-        font-weight: lighter;
+        font-weight: normal;
         color: $primary-color;
         font-size: $text-lg;
       }
@@ -108,7 +108,7 @@
         text-transform: uppercase;
         color: $secondary-color;
         cursor: pointer;
-        font-weight: 600;
+        font-weight: 500;
       }
 
       button {

@@ -16,6 +16,7 @@
         color: $primary-color;
         position: relative;
         align-items: center;
+        font-weight: 400;
         @include spacing-x(0.3em);
 
         &::before {
