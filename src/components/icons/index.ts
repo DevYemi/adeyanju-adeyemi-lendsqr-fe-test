@@ -24,6 +24,10 @@ import UnisexUserIcon from "./UnisexUserIcon"
 import MultipleUsersIcon from "./MultipleUsersIcon"
 import UserLoanIcon from "./UserLoanIcon"
 import UserWithSavingsIcon from "./UserWithSavingsIcon"
+import FilterIcon from "./FilterIcon"
+import VisibilityIcon from "./VisibilityIcon"
+import UserTimesOutlineIcon from "./UserTimesOutlineIcon"
+import UserCheckOutlineIcon from "./UserCheckOutlineIcon"
 
 
 
@@ -53,5 +57,9 @@ export {
     UnisexUserIcon,
     UserLoanIcon,
     MultipleUsersIcon,
-    UserWithSavingsIcon
+    UserWithSavingsIcon,
+    FilterIcon,
+    VisibilityIcon,
+    UserTimesOutlineIcon,
+    UserCheckOutlineIcon
 }
