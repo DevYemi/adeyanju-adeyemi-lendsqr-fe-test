@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import { store } from './redux-toolkit/store';
 import { Provider } from 'react-redux';
+import StyledEngineProvider from "@mui/material/StyledEngineProvider";
 
 import GetRoutes from './utils/routes';
 
@@ -17,7 +18,10 @@ function App() {
 
   return (
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <StyledEngineProvider injectFirst>
+        <RouterProvider router={router} />
+      </StyledEngineProvider>
+
     </Provider>
   )
 }
