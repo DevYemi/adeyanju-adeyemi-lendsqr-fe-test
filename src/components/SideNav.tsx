@@ -21,7 +21,7 @@ import {
     UserSettingsIcon,
     UserTimesIcon
 } from './icons'
-import { ChevronDownIcon } from '@heroicons/react/24/outline'
+import { KeyboardArrowDownRounded } from '@mui/icons-material';
 import { NavLink } from "react-router-dom"
 
 function SideNav() {
@@ -32,7 +32,7 @@ function SideNav() {
                     <NavLink to={"/organization"} className={({ isActive }) => isActive ? styles.active : ""}>
                         <BriefCaseIcon />
                         <span>Switch Organization</span>
-                        <ChevronDownIcon width={16} height={16} />
+                        <KeyboardArrowDownRounded width={16} height={16} />
                     </NavLink>
 
                 </li>
