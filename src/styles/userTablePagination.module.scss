@@ -1,0 +1,63 @@
+@import "./base/index.scss";
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 20px;
+
+  .sec1 {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+
+    > p {
+      white-space: nowrap;
+      font-size: $text-sm;
+
+      @include screen-md {
+        font-size: $text-base;
+      }
+    }
+
+    :global .MuiFormControl-root {
+      .MuiSelect-select {
+        padding-bottom: 0.2em;
+        padding-top: 0.2em;
+        padding-left: 1em;
+        padding-right: 3em;
+        color: $primary-color;
+        background-color: $primary-light-color;
+      }
+
+      svg {
+        color: $primary-color;
+      }
+
+      fieldset {
+        border-color: $primary-color;
+        border: none;
+      }
+    }
+
+    @include screen-md {
+      column-gap: 20px;
+    }
+  }
+
+  .sec2 {
+    :global .MuiPagination-root {
+      .MuiPaginationItem-previousNext {
+        background-color: $primary-light-color;
+      }
+      .MuiButtonBase-root {
+        color: $primary-color;
+        border: none;
+      }
+    }
+  }
+
+  @include screen-md {
+    justify-content: space-between;
+  }
+}

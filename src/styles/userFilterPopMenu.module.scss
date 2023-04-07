@@ -1,0 +1,65 @@
+@import "./base/index.scss";
+.filterWrapper {
+  :global .MuiPaper-root {
+    border-radius: 4px;
+  }
+}
+
+.filterCloseButton {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+
+  @include screen-lg {
+    display: none;
+  }
+}
+
+.filterContent {
+  width: 100%;
+  padding: 3em 1em;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+
+  .filterContentBtnGroup {
+    display: flex;
+    align-items: center;
+    column-gap: 50px;
+    justify-content: center;
+
+    :global .MuiButton-root {
+      font-weight: 600;
+      padding: 0.6em 1.5em;
+      border-radius: 8px;
+
+      &.MuiButton-contained {
+        color: white;
+      }
+    }
+  }
+
+  :global .MuiFormControl-root {
+    row-gap: 10px;
+    label {
+      color: $primary-color;
+      font-weight: 500;
+    }
+    .MuiInputBase-root,
+    .MuiInputBase-root {
+      border-radius: 8px;
+
+      .MuiSelect-select,
+      .MuiInputBase-input {
+        padding-top: 0.6em;
+        padding-bottom: 0.6em;
+      }
+    }
+  }
+
+  @include screen-md {
+    width: 300px;
+  }
+}

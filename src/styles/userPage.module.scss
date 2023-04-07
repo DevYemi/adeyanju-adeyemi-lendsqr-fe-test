@@ -1,0 +1,195 @@
+@import "./base/index.scss";
+
+.container {
+  color: $primary-color;
+  display: grid;
+  grid-template-rows: repeat(auto-fill, minmax(auto, auto));
+  row-gap: 40px;
+
+  h1 {
+    font-weight: 600;
+  }
+  .sec1 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: white;
+      padding: 1em;
+      border-radius: 4px;
+      box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+      @include spacing-y(0.3em);
+
+      &.usersContent {
+        span {
+          background-color: #fce8ff;
+        }
+      }
+      &.activeUsersContent {
+        span {
+          background-color: #efe8ff;
+        }
+      }
+      &.usersLoanContent {
+        span {
+          background-color: #feefed;
+        }
+      }
+      &.usersSavingsContent {
+        span {
+          background-color: #ffebf0;
+        }
+      }
+
+      > span {
+        padding: 0.6em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        width: fit-content;
+        aspect-ratio: 1/1;
+      }
+
+      > p:nth-of-type(2) {
+        font-weight: 700;
+        font-size: $text-x-lg;
+      }
+    }
+
+    @include screen-md {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+  }
+
+  .sec2 {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    overflow: hidden;
+    position: relative;
+    .tableWrapper {
+      overflow-x: auto;
+      padding: 2em;
+      background-color: white;
+      box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.09);
+      border-radius: 4px;
+      overflow-y: hidden;
+
+      /* width */
+      &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      /* Track */
+      &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px rgba(128, 128, 128, 0.4);
+        border-radius: 5px;
+      }
+
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+        background: rgba(128, 128, 128, 0.4);
+        border-radius: 10px;
+      }
+
+      /* Handle on hover */
+      &::-webkit-scrollbar-thumb:hover {
+        background: rgba(128, 128, 128, 0.6);
+      }
+
+      @include screen-lg {
+        transform: translateX(0px);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 1120px;
+        th {
+          text-align: left;
+          padding: 0em 0px;
+          cursor: pointer;
+          div {
+            display: flex;
+            align-items: center;
+            @include spacing-x(0.5em);
+          }
+        }
+
+        tr {
+          &:last-child {
+            td {
+              border-bottom: none;
+            }
+          }
+
+          td {
+            border-bottom: 1px solid #ddd;
+            padding: 1.5em 0px;
+
+            &:last-child {
+              border-bottom: none;
+            }
+
+            &.cellMore {
+              div {
+                position: relative;
+                > svg {
+                  cursor: pointer;
+                }
+              }
+            }
+
+            > span {
+              padding: 0.5em 1em;
+              border-radius: 25px;
+              font-size: $text-base;
+
+              &.statusInactive {
+                background-color: #f5f6f7;
+                color: $sec2-color;
+              }
+              &.statusPending {
+                background-color: #fdf8e6;
+                color: #e9b200;
+              }
+              &.statusBlacklisted {
+                background-color: #fde6ec;
+                color: #e4033b;
+              }
+              &.statusActive {
+                background-color: #f3fcf6;
+                color: #39cd62;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Custom styles for Material UI dropMenu
+// Added styles outside the container styles cause MUI injects the menu insides the document body directly which lead to css specifity issue
+.cellMoreDropMenu {
+  :global .MuiMenu-list {
+    padding: 0;
+
+    .MuiMenuItem-root {
+      padding: 1.2em 1em;
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+    }
+  }
+}
+
+.filterContent {
+  padding: 1em;
+}
