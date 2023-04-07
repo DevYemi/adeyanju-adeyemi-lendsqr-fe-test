@@ -41,7 +41,7 @@
       input {
         padding: 0.8em;
         padding-right: 4em;
-        border-radius: 8px;
+        border-radius: $radius-base;
         font-size: $text-base;
         border: 1px solid #545f7d68;
         width: 100%;
@@ -153,7 +153,7 @@
     visibility: hidden;
     grid-template-rows: auto auto auto;
     row-gap: 5px;
-    border-radius: 8px;
+    border-radius: $radius-base;
     color: $primary-color;
     font-weight: 600;
     z-index: 3;
@@ -227,7 +227,7 @@
         width: fit-content;
         height: max-content;
         padding: 1em;
-        border-radius: 8px;
+        border-radius: $radius-base;
         top: 66px;
         right: 9px;
         opacity: 0;

@@ -1,7 +1,8 @@
+@use "sass:math";
 @import "./base/index.scss";
 .filterWrapper {
   :global .MuiPaper-root {
-    border-radius: 4px;
+    border-radius: math.div($radius-base, 2);
   }
 }
 
@@ -19,7 +20,7 @@
 .filterContent {
   width: 100%;
   padding: 3em 1em;
-  border-radius: 4px;
+  border-radius: math.div($radius-base, 2);
   display: flex;
   flex-direction: column;
   row-gap: 30px;
@@ -33,7 +34,7 @@
     :global .MuiButton-root {
       font-weight: 600;
       padding: 0.6em 1.5em;
-      border-radius: 8px;
+      border-radius: $radius-base;
 
       &.MuiButton-contained {
         color: white;
@@ -49,7 +50,7 @@
     }
     .MuiInputBase-root,
     .MuiInputBase-root {
-      border-radius: 8px;
+      border-radius: $radius-base;
 
       .MuiSelect-select,
       .MuiInputBase-input {

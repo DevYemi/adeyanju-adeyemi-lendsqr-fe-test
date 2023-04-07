@@ -1,3 +1,4 @@
+@use "sass:math";
 @import "./base/index.scss";
 
 .container {
@@ -20,7 +21,7 @@
       justify-content: center;
       background-color: white;
       padding: 1em;
-      border-radius: 4px;
+      border-radius: math.div($radius-base, 2);
       box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
       @include spacing-y(0.3em);
 
@@ -77,7 +78,7 @@
       padding: 2em;
       background-color: white;
       box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.09);
-      border-radius: 4px;
+      border-radius: math.div($radius-base, 2);
       overflow-y: hidden;
 
       /* width */
