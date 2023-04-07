@@ -28,6 +28,7 @@ import FilterIcon from "./FilterIcon"
 import VisibilityIcon from "./VisibilityIcon"
 import UserTimesOutlineIcon from "./UserTimesOutlineIcon"
 import UserCheckOutlineIcon from "./UserCheckOutlineIcon"
+import UserSkeletonIcon from "./UserSkeletonIcon"
 
 
 
@@ -61,5 +62,6 @@ export {
     FilterIcon,
     VisibilityIcon,
     UserTimesOutlineIcon,
-    UserCheckOutlineIcon
+    UserCheckOutlineIcon,
+    UserSkeletonIcon
 }

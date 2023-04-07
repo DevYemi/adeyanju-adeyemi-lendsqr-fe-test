@@ -6,6 +6,8 @@ import {
     VisibilityIcon
 } from '@/components/icons'
 import { MouseEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 // Note this component Inherits its styles from its parent component
 
@@ -14,7 +16,7 @@ interface propTypes {
 }
 
 function UserTableRow({ styles }: propTypes) {
-
+    const navigate = useNavigate()
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: MouseEvent<any>) => {
@@ -24,7 +26,7 @@ function UserTableRow({ styles }: propTypes) {
         setAnchorEl(null);
     };
     return (
-        <tr>
+        <tr onClick={() => navigate(`${"1"}`)}>
             <td className={styles.cellOrganisation}>Lendsqr</td>
             <td className={styles.cellUsername}>Debby Ogana</td>
             <td className={styles.cellEmail}>adedeji@lendsqr.com</td>

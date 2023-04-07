@@ -1,0 +1,217 @@
+@import "./base/index.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2em;
+  color: $primary-color;
+  .sec1 {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    font-weight: 400;
+    cursor: pointer;
+  }
+
+  .sec2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 20px;
+
+    > div {
+      display: flex;
+      align-items: center;
+      column-gap: 20px;
+
+      button {
+        font-weight: 600;
+        border-radius: 8px;
+        border: 2px solid;
+        font-size: $text-xs;
+
+        &:first-child {
+          color: $blacklist-color;
+        }
+
+        @include screen-md {
+          font-size: $text-base;
+        }
+      }
+    }
+  }
+
+  .sec3 {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    .userDetailsPreview {
+      display: flex;
+      flex-direction: column;
+      row-gap: 40px;
+      background-color: white;
+      padding: 2em;
+      border-radius: 4px;
+      padding-bottom: 0;
+      box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+
+      .userDetailsPreviewInfo {
+        display: flex;
+        align-items: center;
+        column-gap: 20px;
+        flex-direction: column;
+
+        > div {
+          display: flex;
+          flex-direction: column;
+          row-gap: 10px;
+          padding: 1em 2.5em;
+          align-items: center;
+
+          &.userTier {
+            border-left: 2px solid $primary-light-color;
+            border-right: 2px solid $primary-light-color;
+            p {
+              display: flex;
+              align-items: center;
+            }
+          }
+
+          @include screen-lg(1160px) {
+            align-items: flex-start;
+            &:first-child {
+              align-items: center;
+            }
+          }
+        }
+        :global .MuiAvatar-root {
+          background-color: $primary-light-color;
+        }
+
+        @include screen-lg(1160px) {
+          flex-direction: row;
+        }
+      }
+
+      .userDetailsPreviewNav {
+        overflow: hidden;
+        overflow-x: auto;
+        padding-bottom: 0.5em;
+        color: black;
+        /* width */
+        &::-webkit-scrollbar {
+          height: 8px;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+          box-shadow: inset 0 0 5px rgba(128, 128, 128, 0.4);
+          border-radius: 5px;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+          background: rgba(128, 128, 128, 0.4);
+          border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+          background: rgba(128, 128, 128, 0.6);
+        }
+        ul {
+          display: flex;
+          justify-content: space-between;
+          list-style: none;
+          min-width: 1080px;
+
+          li {
+            position: relative;
+            padding: 0em 2em;
+            padding-bottom: 1em;
+            cursor: pointer;
+            transition: all 250ms ease-out;
+
+            &::after {
+              content: "";
+              position: absolute;
+              width: 100%;
+              height: 3px;
+              background-color: $secondary-color;
+              bottom: 0;
+              left: 0;
+              transform: scaleX(0);
+              transition: all 250ms ease-out;
+            }
+
+            &.activeNav,
+            &:hover {
+              color: $secondary-color;
+
+              &::after {
+                transform: scaleX(1);
+              }
+            }
+          }
+        }
+
+        @include screen-xl() {
+          padding: 0px;
+        }
+      }
+    }
+
+    > .userDetailsInfoWrapper {
+      background-color: white;
+      padding: 2em;
+      padding-bottom: 0px;
+      border-radius: 4px;
+      box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+
+      .userDetailsInfo {
+        display: flex;
+        column-gap: 40px;
+        > div {
+          min-width: 100%;
+        }
+
+        .generalDetails {
+          display: flex;
+          flex-direction: column;
+          row-gap: 40px;
+          border-radius: 4px;
+          > .row {
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+            padding-bottom: 2em;
+            border-bottom: 1px solid $primary-light-color;
+            font-size: $text-sm;
+
+            > .rowContent {
+              display: grid;
+              grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+              gap: 40px;
+              color: $sec2-color;
+
+              > div {
+                display: flex;
+                flex-direction: column;
+                row-gap: 10px;
+
+                p:first-child {
+                  text-transform: uppercase;
+                }
+                p:last-child {
+                  font-weight: 700;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -123,6 +123,7 @@
         }
 
         tr {
+          cursor: pointer;
           &:last-child {
             td {
               border-bottom: none;
@@ -161,7 +162,7 @@
               }
               &.statusBlacklisted {
                 background-color: #fde6ec;
-                color: #e4033b;
+                color: $blacklist-color;
               }
               &.statusActive {
                 background-color: #f3fcf6;
