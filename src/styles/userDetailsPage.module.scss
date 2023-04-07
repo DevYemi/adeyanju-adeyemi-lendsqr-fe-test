@@ -1,6 +1,3 @@
-@use "sass:math";
-@import "./base/index.scss";
-
 .container {
   display: flex;
   flex-direction: column;
@@ -125,7 +122,7 @@
           display: flex;
           justify-content: space-between;
           list-style: none;
-          min-width: 1080px;
+          min-width: 1020px;
 
           li {
             position: relative;
@@ -166,7 +163,7 @@
     > .userDetailsInfoWrapper {
       background-color: white;
       padding: 2em;
-      padding-bottom: 0px;
+      padding-bottom: 3em;
       border-radius: math.div($radius-base, 2);
       box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
       overflow: hidden;
@@ -190,6 +187,10 @@
             padding-bottom: 2em;
             border-bottom: 1px solid $primary-light-color;
             font-size: $text-sm;
+
+            &:last-child {
+              border: none;
+            }
 
             > .rowContent {
               display: grid;
