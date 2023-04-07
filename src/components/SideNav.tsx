@@ -29,7 +29,7 @@ function SideNav() {
         <div className={styles.container}>
             <ul className={styles.list1}>
                 <li>
-                    <NavLink to={"/organization"} className={({ isActive }) => isActive ? styles.active : ""}>
+                    <NavLink to={"/"}>
                         <BriefCaseIcon />
                         <span>Switch Organization</span>
                         <KeyboardArrowDownRounded width={16} height={16} />
@@ -53,43 +53,43 @@ function SideNav() {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/guarantors"} className={({ isActive }) => isActive ? styles.active : ""}>
+                        <NavLink to={"/"}>
                             <UserFriendsIcon />
                             <span>Guarantors</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/loans"} className={({ isActive }) => isActive ? styles.active : ""}>
+                        <NavLink to={"/"}>
                             <SacksIcon />
                             <span>Loans</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/decision-model"} className={({ isActive }) => isActive ? styles.active : ""}>
+                        <NavLink to={"/"}>
                             <HandShakeIcon />
                             <span>Decision Models</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/savings"} className={({ isActive }) => isActive ? styles.active : ""}>
+                        <NavLink to={"/"}>
                             <PiggyBankIcon />
                             <span>Savings</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/loan-request"} className={({ isActive }) => isActive ? styles.active : ""}>
+                        <NavLink to={"/"}>
                             <LoanIcon />
                             <span>Loan Requests</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/whitelist"} className={({ isActive }) => isActive ? styles.active : ""}>
+                        <NavLink to={"/"}>
                             <UserCheckIcon />
                             <span>Whitelist</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/karma"} className={({ isActive }) => isActive ? styles.active : ""}>
+                        <NavLink to={"/"}>
                             <UserTimesIcon />
                             <span>Karma</span>
                         </ NavLink>
@@ -100,55 +100,55 @@ function SideNav() {
                 <p>business</p>
                 <ul className={styles.list3}>
                     <li>
-                        <NavLink to={"/organisation"} className={({ isActive }) => isActive ? styles.active : ""}>
+                        <NavLink to={"/"}>
                             <BriefCaseIcon />
                             <span>Organization</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/loan-product"} className={({ isActive }) => isActive ? styles.active : ""}>
+                        <NavLink to={"/"}>
                             <LoanIcon />
                             <span>Loan Products</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/savings-product"} className={({ isActive }) => isActive ? styles.active : ""}>
+                        <NavLink to={"/"}>
                             <SavingHouseIcon />
                             <span>Savings Products</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/fees"} className={({ isActive }) => isActive ? styles.active : ""}>
+                        <NavLink to={"/"}>
                             <CoinsIcon />
                             <span>Fees and Charges</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/transactions"} className={({ isActive }) => isActive ? styles.active : ""}>
+                        <NavLink to={"/"}>
                             <TransactionIcon />
                             <span>Transactions</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/services"} className={({ isActive }) => isActive ? styles.active : ""}>
+                        <NavLink to={"/"}>
                             <GalaxyIcon />
                             <span>Services</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/service-account"} className={({ isActive }) => isActive ? styles.active : ""}>
+                        <NavLink to={"/"}>
                             <UserSettingsIcon />
                             <span>Service Account</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/settlements"} className={({ isActive }) => isActive ? styles.active : ""}>
+                        <NavLink to={"/"}>
                             <ScrolIcon />
                             <span>Settlements</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/reports"} className={({ isActive }) => isActive ? styles.active : ""}>
+                        <NavLink to={"/"}>
                             <ChartBarIcon />
                             <span>Reports</span>
                         </ NavLink>
@@ -159,19 +159,19 @@ function SideNav() {
                 <p>settings</p>
                 <ul className={styles.list4}>
                     <li>
-                        <NavLink to={"/preferences"} className={({ isActive }) => isActive ? styles.active : ""}>
+                        <NavLink to={"/"}>
                             <SliderIcon />
                             <span>Preferences</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/fees-and-pricing"} className={({ isActive }) => isActive ? styles.active : ""}>
+                        <NavLink to={"/"}>
                             <BadgePercentIcon />
                             <span>Fees and Pricing</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/audit-logs"} className={({ isActive }) => isActive ? styles.active : ""}>
+                        <NavLink to={"/"}>
                             <ClipboardListIcon />
                             <span>Audit Logs</span>
                         </ NavLink>

@@ -26,12 +26,12 @@ function UserTableRow({ styles }: propTypes) {
         setAnchorEl(null);
     };
     return (
-        <tr onClick={() => navigate(`${"1"}`)}>
-            <td className={styles.cellOrganisation}>Lendsqr</td>
-            <td className={styles.cellUsername}>Debby Ogana</td>
-            <td className={styles.cellEmail}>adedeji@lendsqr.com</td>
-            <td className={styles.cellPhone}>08141996643</td>
-            <td className={styles.cellDate}>May 15, 2020 10:00 AM</td>
+        <tr>
+            <td onClick={() => navigate(`${"1"}`)} className={styles.cellOrganisation}>Lendsqr</td>
+            <td onClick={() => navigate(`${"1"}`)} className={styles.cellUsername}>Debby Ogana</td>
+            <td onClick={() => navigate(`${"1"}`)} className={styles.cellEmail}>adedeji@lendsqr.com</td>
+            <td onClick={() => navigate(`${"1"}`)} className={styles.cellPhone}>08141996643</td>
+            <td onClick={() => navigate(`${"1"}`)} className={styles.cellDate}>May 15, 2020 10:00 AM</td>
             <td className={styles.cellStatus}><span className={styles.statusInactive}>inactive </span></td>
             <td className={styles.cellMore}>
                 <div>
