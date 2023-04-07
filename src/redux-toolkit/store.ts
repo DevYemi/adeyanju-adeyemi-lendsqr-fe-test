@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query';
 import sideNavVisibility from './features/sideNavVisibility';
+import { apiSlice } from './api/apiSlice';
 
 
 const rootReducer = combineReducers({
+    [apiSlice.reducerPath]: apiSlice.reducer,
     [sideNavVisibility.name]: sideNavVisibility.reducer
 })
 
@@ -11,6 +13,8 @@ const rootReducer = combineReducers({
 export const store = configureStore({
     reducer: rootReducer,
     devTools: true,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(apiSlice.middleware)
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
