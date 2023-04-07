@@ -10,6 +10,7 @@ import {
     HandShakeIcon,
     HomeIcon, LoanIcon,
     PiggyBankIcon,
+    RightBucketArrowIcon,
     SacksIcon,
     SavingHouseIcon,
     ScrolIcon,
@@ -178,6 +179,13 @@ function SideNav() {
                     </li>
                 </ul>
             </div>
+
+            <p className={styles.logOut}>
+                <RightBucketArrowIcon />
+                <span>Log Out</span>
+            </p>
+            <p className={styles.appVersion}>v1.2.0</p>
+
         </div>
     )
 }

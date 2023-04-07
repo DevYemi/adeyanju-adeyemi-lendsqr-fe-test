@@ -29,6 +29,7 @@ import VisibilityIcon from "./VisibilityIcon"
 import UserTimesOutlineIcon from "./UserTimesOutlineIcon"
 import UserCheckOutlineIcon from "./UserCheckOutlineIcon"
 import UserSkeletonIcon from "./UserSkeletonIcon"
+import RightBucketArrowIcon from "./RightBucketArrowIcon"
 
 
 
@@ -63,5 +64,6 @@ export {
     VisibilityIcon,
     UserTimesOutlineIcon,
     UserCheckOutlineIcon,
-    UserSkeletonIcon
+    UserSkeletonIcon,
+    RightBucketArrowIcon
 }

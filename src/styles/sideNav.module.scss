@@ -1,55 +1,60 @@
+@mixin listItemStyle {
+  display: flex;
+  padding: 1em;
+  opacity: 0.7;
+  text-decoration: none;
+  color: $primary-color;
+  position: relative;
+  align-items: center;
+  font-weight: 400;
+  @include spacing-x(0.3em);
+
+  &::before {
+    content: "";
+    position: absolute;
+    transform: scaleY(0);
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background-color: $secondary-color;
+    transition: all 250ms ease-in;
+  }
+
+  &.active::before {
+    transform: scaleY(1);
+  }
+
+  &.active {
+    opacity: 1;
+    background-color: #f3fcfc;
+  }
+
+  &:hover {
+    opacity: 1;
+    background-color: #f3fcfc;
+    &::before {
+      transform: scaleY(1);
+    }
+  }
+
+  @include spacing-x(0.3em);
+  @include screen-md {
+    padding: 1em 2em;
+  }
+}
+
 .container {
   color: $primary-color;
   font-size: $text-base;
   padding: 2em 0px;
+  padding-bottom: 0px;
   @include spacing-y(2em);
 
   ul {
     li {
       a {
-        display: flex;
-        padding: 1em;
-        opacity: 0.7;
-        text-decoration: none;
-        color: $primary-color;
-        position: relative;
-        align-items: center;
-        font-weight: 400;
-        @include spacing-x(0.3em);
-
-        &::before {
-          content: "";
-          position: absolute;
-          transform: scaleY(0);
-          top: 0;
-          left: 0;
-          width: 3px;
-          height: 100%;
-          background-color: $secondary-color;
-          transition: all 250ms ease-in;
-        }
-
-        &.active::before {
-          transform: scaleY(1);
-        }
-
-        &.active {
-          opacity: 1;
-          background-color: #f3fcfc;
-        }
-
-        &:hover {
-          opacity: 1;
-          background-color: #f3fcfc;
-          &::before {
-            transform: scaleY(1);
-          }
-        }
-
-        @include spacing-x(0.3em);
-        @include screen-md {
-          padding: 1em 2em;
-        }
+        @include listItemStyle;
       }
     }
   }
@@ -69,6 +74,20 @@
 
     ul {
       @include spacing-y(1em);
+    }
+  }
+
+  .logOut {
+    @include listItemStyle;
+    padding-top: 3em;
+    border-top: 1px solid $primary-light-color;
+    cursor: pointer;
+  }
+
+  .appVersion {
+    padding: 1em;
+    @include screen-md {
+      padding: 1em 2em;
     }
   }
 }
