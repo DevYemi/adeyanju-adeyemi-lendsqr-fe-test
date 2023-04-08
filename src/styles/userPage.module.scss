@@ -1,3 +1,12 @@
+.emptyUser {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 20px;
+  color: $primary-color;
+}
+
 .container {
   color: $primary-color;
   display: grid;
@@ -17,7 +26,7 @@
       flex-direction: column;
       justify-content: center;
       background-color: white;
-      padding: 1em;
+      padding: 1em 2em;
       border-radius: math.div($radius-base, 2);
       box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
       @include spacing-y(0.3em);
@@ -111,8 +120,14 @@
         min-width: 1120px;
         th {
           text-align: left;
-          padding: 0em 0px;
+          padding: 0em 1em;
           cursor: pointer;
+          white-space: nowrap;
+
+          &:first-child {
+            padding-left: 0;
+          }
+
           div {
             display: flex;
             align-items: center;
@@ -130,7 +145,12 @@
 
           td {
             border-bottom: 1px solid #ddd;
-            padding: 1.5em 0px;
+            padding: 1.5em 1em;
+            white-space: nowrap;
+
+            &:first-child {
+              padding-left: 0;
+            }
 
             &:last-child {
               border-bottom: none;

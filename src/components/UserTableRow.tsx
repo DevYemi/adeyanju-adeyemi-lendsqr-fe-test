@@ -7,15 +7,17 @@ import {
 } from '@/components/icons'
 import { MouseEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { userRequestResultTypes } from '@/redux-toolkit/api/types';
 
 
 // Note this component Inherits its styles from its parent component
 
 interface propTypes {
-    styles: CSSModuleClasses
+    styles: CSSModuleClasses,
+    user: userRequestResultTypes
 }
 
-function UserTableRow({ styles }: propTypes) {
+function UserTableRow({ styles, user }: propTypes) {
     const navigate = useNavigate()
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
@@ -27,12 +29,12 @@ function UserTableRow({ styles }: propTypes) {
     };
     return (
         <tr>
-            <td onClick={() => navigate(`${"1"}`)} className={styles.cellOrganisation}>Lendsqr</td>
-            <td onClick={() => navigate(`${"1"}`)} className={styles.cellUsername}>Debby Ogana</td>
-            <td onClick={() => navigate(`${"1"}`)} className={styles.cellEmail}>adedeji@lendsqr.com</td>
-            <td onClick={() => navigate(`${"1"}`)} className={styles.cellPhone}>08141996643</td>
-            <td onClick={() => navigate(`${"1"}`)} className={styles.cellDate}>May 15, 2020 10:00 AM</td>
-            <td className={styles.cellStatus}><span className={styles.statusInactive}>inactive </span></td>
+            <td onClick={() => navigate(`${"1"}`)} className={styles.cellOrganisation}>{user.orgName}</td>
+            <td onClick={() => navigate(`${"1"}`)} className={styles.cellUsername}>{user.email}</td>
+            <td onClick={() => navigate(`${"1"}`)} className={styles.cellEmail}>{user.email}</td>
+            <td onClick={() => navigate(`${"1"}`)} className={styles.cellPhone}>{user.phoneNumber}</td>
+            <td onClick={() => navigate(`${"1"}`)} className={styles.cellDate}>{user.createdAt}</td>
+            <td className={styles.cellStatus}><span className={styles.statusInactive}>inactive</span></td>
             <td className={styles.cellMore}>
                 <div>
                     <MoreVert onClick={handleClick} width={24} height={24} />

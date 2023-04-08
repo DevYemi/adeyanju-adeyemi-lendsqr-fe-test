@@ -86,6 +86,7 @@
 
   .appVersion {
     padding: 1em;
+    font-size: $text-sm;
     @include screen-md {
       padding: 1em 2em;
     }
