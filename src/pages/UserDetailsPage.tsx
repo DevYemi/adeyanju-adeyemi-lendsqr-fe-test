@@ -129,9 +129,11 @@ function UserDetailsPage() {
             </div>
         )
     } else {
-        <div>
-            Something unexpected went wrong, our engineers have been notified of the issue
-        </div>
+        return (
+            <div>
+                Something unexpected went wrong, our engineers have been notified of the issue
+            </div>
+        )
     }
 
 

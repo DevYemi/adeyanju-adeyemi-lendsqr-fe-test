@@ -29,7 +29,7 @@
       padding: 1em 2em;
       border-radius: math.div($radius-base, 2);
       box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
-      @include spacing-y(0.3em);
+      row-gap: 20px;
 
       &.usersContent {
         span {
