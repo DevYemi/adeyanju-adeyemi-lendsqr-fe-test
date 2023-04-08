@@ -7,7 +7,7 @@ import { Outlet, ScrollRestoration } from "react-router-dom";
 function Dashboard() {
     const { isOpen: isSideNavOpen } = useAppSelector(state => state.sideNavVisibility);
     return (
-        <div className={styles.wrapper}>
+        <div data-testid="dashboardWrapper" className={styles.wrapper}>
             <ScrollRestoration />
             <Header />
             <main>
