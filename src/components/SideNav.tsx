@@ -37,7 +37,7 @@ function SideNav() {
         <div className={styles.container}>
             <ul className={styles.list1}>
                 <li>
-                    <NavLink to={"/"}>
+                    <NavLink to={"#"}>
                         <BriefCaseIcon />
                         <span>Switch Organization</span>
                         <KeyboardArrowDownRounded width={16} height={16} />
@@ -61,43 +61,43 @@ function SideNav() {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/"}>
+                        <NavLink to={"#"}>
                             <UserFriendsIcon />
                             <span>Guarantors</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/"}>
+                        <NavLink to={"#"}>
                             <SacksIcon />
                             <span>Loans</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/"}>
+                        <NavLink to={"#"}>
                             <HandShakeIcon />
                             <span>Decision Models</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/"}>
+                        <NavLink to={"#"}>
                             <PiggyBankIcon />
                             <span>Savings</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/"}>
+                        <NavLink to={"#"}>
                             <LoanIcon />
                             <span>Loan Requests</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/"}>
+                        <NavLink to={"#"}>
                             <UserCheckIcon />
                             <span>Whitelist</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/"}>
+                        <NavLink to={"#"}>
                             <UserTimesIcon />
                             <span>Karma</span>
                         </ NavLink>
@@ -108,55 +108,55 @@ function SideNav() {
                 <p>business</p>
                 <ul className={styles.list3}>
                     <li>
-                        <NavLink to={"/"}>
+                        <NavLink to={"#"}>
                             <BriefCaseIcon />
                             <span>Organization</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/"}>
+                        <NavLink to={"#"}>
                             <LoanIcon />
                             <span>Loan Products</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/"}>
+                        <NavLink to={"#"}>
                             <SavingHouseIcon />
                             <span>Savings Products</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/"}>
+                        <NavLink to={"#"}>
                             <CoinsIcon />
                             <span>Fees and Charges</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/"}>
+                        <NavLink to={"#"}>
                             <TransactionIcon />
                             <span>Transactions</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/"}>
+                        <NavLink to={"#"}>
                             <GalaxyIcon />
                             <span>Services</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/"}>
+                        <NavLink to={"#"}>
                             <UserSettingsIcon />
                             <span>Service Account</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/"}>
+                        <NavLink to={"#"}>
                             <ScrolIcon />
                             <span>Settlements</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/"}>
+                        <NavLink to={"#"}>
                             <ChartBarIcon />
                             <span>Reports</span>
                         </ NavLink>
@@ -167,19 +167,19 @@ function SideNav() {
                 <p>settings</p>
                 <ul className={styles.list4}>
                     <li>
-                        <NavLink to={"/"}>
+                        <NavLink to={"#"}>
                             <SliderIcon />
                             <span>Preferences</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/"}>
+                        <NavLink to={"#"}>
                             <BadgePercentIcon />
                             <span>Fees and Pricing</span>
                         </ NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/"}>
+                        <NavLink to={"#"}>
                             <ClipboardListIcon />
                             <span>Audit Logs</span>
                         </ NavLink>
