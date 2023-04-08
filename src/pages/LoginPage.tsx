@@ -42,7 +42,7 @@ function LoginPage() {
         navigate("/")
     }
     return (
-        <div className={styles.wrapper}>
+        <div data-testid="loginWrapper" className={styles.wrapper}>
             <div className={styles.container}>
                 <section>
                     <div className={styles.logo}>
@@ -61,6 +61,7 @@ function LoginPage() {
                         <div>
                             <input
                                 type="text"
+                                data-testid="emailInput"
                                 placeholder='Email'
                                 className={email.err ? styles.inputError : ""}
                                 onChange={(e) => setEmail({ value: e.target.value, err: null })}
@@ -74,6 +75,7 @@ function LoginPage() {
                             <div>
                                 <input
                                     type={isShowPassword ? "text" : "password"}
+                                    data-testid="passwordInput"
                                     placeholder='Password'
                                     className={password.err ? styles.inputError : ""}
                                     onChange={(e) => setPassword({ value: e.target.value, err: null })}
@@ -85,7 +87,7 @@ function LoginPage() {
                             }
                         </div>
                         <p>Forgot PASSWORD?</p>
-                        <button type='submit'>LOG IN</button>
+                        <button data-testid="formSubmit" type='submit'>LOG IN</button>
                     </form>
                 </section>
             </div>
