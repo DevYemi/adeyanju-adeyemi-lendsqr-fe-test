@@ -2,24 +2,20 @@ import styles from "@/styles/userTablePagination.module.scss"
 import CustomMuiSelectField from './CustomMuiSelectField'
 import { MenuItem, Pagination, SelectChangeEvent } from '@mui/material'
 import { ChangeEvent, useMemo } from "react"
+import { useAppSelector } from "@/redux-toolkit/hooks";
 
 interface propTypes {
-    paginationUserListPerPage: number,
     totalUsers: number,
     onPaginationUserListPerPageChange: (e: SelectChangeEvent<string>) => void,
     onPaginationChange: (e: ChangeEvent<unknown>, value: number) => void,
-    paginationCurrentPage: number,
-    paginationInterval: number
 }
 
 function UserTablePagination({
-    paginationUserListPerPage,
     onPaginationUserListPerPageChange,
     totalUsers,
-    paginationInterval,
-    paginationCurrentPage,
     onPaginationChange }: propTypes) {
 
+    const { paginationUserListPerPage, paginationInterval, paginationCurrentPage } = useAppSelector(state => state.userPageTablePagination);
     const paginationPageCount = useMemo(() => {
         let value = 1
         if (totalUsers) {

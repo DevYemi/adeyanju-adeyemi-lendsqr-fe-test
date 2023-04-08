@@ -16,24 +16,27 @@ import DisplayRequestErrorMessage from '@/components/DisplayRequestErrorMessage'
 import { SentimentVeryDissatisfied } from '@mui/icons-material';
 import { userRequestResultTypes } from '@/redux-toolkit/api/types';
 import { SelectChangeEvent } from '@mui/material';
+import { useAppSelector } from '@/redux-toolkit/hooks';
+import { useDispatch } from 'react-redux';
+import { updateCurrentPage, updateUserListPerPage } from '@/redux-toolkit/features/userPageTablePagination';
 
 
 function UsersPage() {
-  const paginationInterval = 5;
+  const dispatch = useDispatch()
+  const { paginationUserListPerPage, paginationCurrentPage } = useAppSelector(state => state.userPageTablePagination);
   const [filtterAnchorEl, setFiltterAnchorEl] = useState<null | HTMLElement>(null);
-  const [paginationUserListPerPage, setPaginationUserListPerPage] = useState(paginationInterval);
-  const [paginationCurrentPage, setPaginationCurrentPage] = useState(1);
+
 
 
   const { data: userList, isLoading: userListIsLoading, error: userListError } = useGetUsersQuery("");
 
   const onPaginationChange = (e: ChangeEvent<unknown>, value: number) => {
-    setPaginationCurrentPage(value);
+    dispatch(updateCurrentPage(value))
   }
 
   const onPaginationUserListPerPageChange = (e: SelectChangeEvent<string>) => {
-    setPaginationUserListPerPage(+e.target.value);
-    setPaginationCurrentPage(1)
+    dispatch(updateUserListPerPage(+e.target.value))
+    dispatch(updateCurrentPage(1))
   }
 
 
@@ -145,12 +148,9 @@ function UsersPage() {
             </div>
             <UserFilterPopMenu anchorEl={filtterAnchorEl} setFiltterAnchorEl={setFiltterAnchorEl} />
             <UserTablePagination
-              paginationUserListPerPage={paginationUserListPerPage}
               totalUsers={userList.length}
-              paginationInterval={paginationInterval}
               onPaginationUserListPerPageChange={onPaginationUserListPerPageChange}
               onPaginationChange={onPaginationChange}
-              paginationCurrentPage={paginationCurrentPage}
             />
           </section>
         </div>

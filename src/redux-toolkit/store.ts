@@ -2,11 +2,13 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query';
 import sideNavVisibility from './features/sideNavVisibility';
 import { apiSlice } from './api/apiSlice';
+import userPageTablePagination from './features/userPageTablePagination';
 
 
 const rootReducer = combineReducers({
     [apiSlice.reducerPath]: apiSlice.reducer,
-    [sideNavVisibility.name]: sideNavVisibility.reducer
+    [sideNavVisibility.name]: sideNavVisibility.reducer,
+    [userPageTablePagination.name]: userPageTablePagination.reducer
 })
 
 
