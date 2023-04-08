@@ -36,13 +36,18 @@ function UserTableRow({ styles, user }: propTypes) {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const onRowClick = () => {
+        localStorage.setItem("LendsqrUserDetails", JSON.stringify(user));
+        navigate(`${user.id}`)
+    }
     return (
         <tr>
-            <td onClick={() => navigate(`${user.id}`)} className={styles.cellOrganisation}>{user.orgName}</td>
-            <td onClick={() => navigate(`${user.id}`)} className={styles.cellUsername}>{user.email}</td>
-            <td onClick={() => navigate(`${user.id}`)} className={styles.cellEmail}>{user.email}</td>
-            <td onClick={() => navigate(`${user.id}`)} className={styles.cellPhone}>{user.phoneNumber}</td>
-            <td onClick={() => navigate(`${user.id}`)} className={styles.cellDate}>{user.createdAt}</td>
+            <td onClick={onRowClick} className={styles.cellOrganisation}>{user.orgName}</td>
+            <td onClick={onRowClick} className={styles.cellUsername}>{user.email}</td>
+            <td onClick={onRowClick} className={styles.cellEmail}>{user.email}</td>
+            <td onClick={onRowClick} className={styles.cellPhone}>{user.phoneNumber}</td>
+            <td onClick={onRowClick} className={styles.cellDate}>{user.createdAt}</td>
             <td className={styles.cellStatus}><span className={styles[`status${randomStatus}`]}>{randomStatus}</span></td>
             <td className={styles.cellMore}>
                 <div>

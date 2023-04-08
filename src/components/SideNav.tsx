@@ -190,9 +190,9 @@ function SideNav() {
                 </ul>
             </div>
 
-            <p className={styles.logOut}>
+            <p onClick={handleLogOut} className={styles.logOut}>
                 <RightBucketArrowIcon />
-                <span onClick={handleLogOut}>Log Out</span>
+                <span >Log Out</span>
             </p>
             <p className={styles.appVersion}>v1.2.0</p>
 

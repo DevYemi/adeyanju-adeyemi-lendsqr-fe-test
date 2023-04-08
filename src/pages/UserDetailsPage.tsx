@@ -1,23 +1,20 @@
 import styles from "@/styles/userDetailsPage.module.scss"
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { WestRounded, StarOutlineOutlined, Star } from '@mui/icons-material';
 import { Button, Avatar } from "@mui/material";
 import { UserSkeletonIcon } from "@/components/icons";
 import gsap from "gsap"
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { createDebounceFunc } from "@/utils/createDebounceFunc";
 import UserDetailsGeneral from "@/components/UserDetailsGeneral";
-import { useGetUserByIdQuery } from "@/redux-toolkit/api/userSlice";
-import LoadingSpinner from "@/components/LoadingSpinner";
-import DisplayRequestErrorMessage from "@/components/DisplayRequestErrorMessage";
+import { userRequestResultTypes } from "@/redux-toolkit/api/types";
 
 function UserDetailsPage() {
     const navigate = useNavigate();
-    const params = useParams();
-    const { data: userData, isLoading: userDataIsLoading, error: userDataError } = useGetUserByIdQuery(params?.userId);
+
+    const userData: userRequestResultTypes = useMemo(() => JSON.parse(localStorage.getItem("LendsqrUserDetails")!), [])
 
 
-    console.log(userData)
     const slideUserDetails = (clickedNav: HTMLElement) => {
         // get relevant elements
         let index = clickedNav.getAttribute("data-user-details-nav") as number | string;
@@ -52,11 +49,9 @@ function UserDetailsPage() {
         return () => window.removeEventListener("resize", resizeCallback)
     }, [])
 
-    if (userDataIsLoading) {
-        return <LoadingSpinner />
-    } else if (userDataError) {
-        return <DisplayRequestErrorMessage error={userDataError} />
-    } else if (userData) {
+
+
+    if (userData) {
         return (
             <div className={styles.container}>
                 <section onClick={() => navigate(-1)} className={styles.sec1}>
