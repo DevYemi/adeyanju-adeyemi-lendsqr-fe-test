@@ -2,6 +2,8 @@ import { lazy, Suspense } from 'react';
 import { Route } from "react-router-dom";
 import LoadingSpinner from '@/components/LoadingSpinner';
 import DashboardPage from "@/pages/DashboardPage";
+const ProtectedRoute = lazy(() => import("@/components/ProtectedRoute"))
+const ProtectedAuthRoute = lazy(() => import("@/components/ProtectedAuthRoute"))
 const ErrorPage = lazy(() => import('@/pages/ErrorPage'));
 const DashboardMainPage = lazy(() => import("@/pages/DashboardMainPage"));
 const UsersPage = lazy(() => import("@/pages/UsersPage"));
@@ -18,7 +20,9 @@ export default function GetRoutes() {
                 path='/login'
                 element={
                     <Suspense fallback={<LoadingSpinner />}>
-                        <LoginPage />
+                        <ProtectedAuthRoute>
+                            <LoginPage />
+                        </ProtectedAuthRoute>
                     </Suspense>
                 }
                 errorElement={
@@ -31,7 +35,9 @@ export default function GetRoutes() {
                 path='/'
                 element={
                     <Suspense fallback={<LoadingSpinner />}>
-                        <DashboardPage />
+                        <ProtectedRoute>
+                            <DashboardPage />
+                        </ProtectedRoute>
                     </Suspense>
                 }
                 errorElement={

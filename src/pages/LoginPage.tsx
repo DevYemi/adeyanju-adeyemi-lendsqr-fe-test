@@ -2,6 +2,7 @@ import React, { FormEvent, useState } from 'react'
 import styles from "@/styles/loginPage.module.scss"
 import companyLogo from "@/assets/imgs/logo.svg"
 import signInIllustration from "@/assets/imgs/signIn-illus-preview.png"
+import { useNavigate } from 'react-router-dom'
 
 interface FormInputTypes {
     value: string,
@@ -11,6 +12,7 @@ interface FormInputTypes {
 
 
 function LoginPage() {
+    const navigate = useNavigate()
     const [email, setEmail] = useState<FormInputTypes>({ value: "", err: null });
     const [password, setPassword] = useState<FormInputTypes>({ value: "", err: null });
     const [isShowPassword, setIsShowPassword] = useState(false);
@@ -33,8 +35,11 @@ function LoginPage() {
         if (isFormError) return;
 
         // Verify user info at the backend
+        const userDetails = { email: email.value }
+        localStorage.setItem("LendsqrAuthDetails", JSON.stringify(userDetails))
 
         // navigate to dashboard if info verification was successfull
+        navigate("/")
     }
     return (
         <div className={styles.wrapper}>

@@ -8,13 +8,20 @@ import gsap from "gsap"
 import { useAppSelector } from '@/redux-toolkit/hooks'
 import { useDispatch } from 'react-redux'
 import { toggleSideNavVisibility } from '@/redux-toolkit/features/sideNavVisibility'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Header() {
+    const navigate = useNavigate();
     const { isOpen: isSideNavOpen } = useAppSelector(state => state.sideNavVisibility);
     const dispatch = useDispatch()
     const sec3Ref = useRef<HTMLDivElement | null>(null);
     const userInfoRef = useRef<HTMLDivElement | null>(null);
     const searchBoxRef = useRef<HTMLDivElement | null>(null);
+
+    const handleLogOut = () => {
+        localStorage.removeItem("LendsqrAuthDetails");
+        navigate("/login", { replace: true })
+    }
 
     const animateHamburger = (shouldOpen: boolean) => {
         const hamburger = document.querySelector('#Nav-hamburger') as HTMLDivElement;
@@ -147,7 +154,7 @@ function Header() {
                 </span>
             </section>
             <section ref={sec3Ref} className={`${styles.sec3}`}>
-                <a href="">Docs</a>
+                <Link to={"#"}>Docs</Link>
                 <span className={styles.bellIcon}>
                     <BellIcon />
                     <small>Notification</small>
@@ -163,7 +170,7 @@ function Header() {
                     </div>
 
                     <div ref={userInfoRef} className={styles.userInfo}>
-                        <p>Log Out</p>
+                        <p onClick={handleLogOut}>Log Out</p>
                     </div>
                 </div>
 

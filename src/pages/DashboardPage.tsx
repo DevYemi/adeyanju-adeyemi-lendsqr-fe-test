@@ -2,7 +2,6 @@ import Header from '@/components/Header'
 import SideNav from '@/components/SideNav'
 import { useAppSelector } from '@/redux-toolkit/hooks';
 import styles from "@/styles/dashboardPage.module.scss"
-import { useState } from 'react';
 import { Outlet } from "react-router-dom";
 
 function Dashboard() {

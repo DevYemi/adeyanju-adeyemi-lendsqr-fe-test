@@ -23,9 +23,16 @@ import {
     UserTimesIcon
 } from './icons'
 import { KeyboardArrowDownRounded } from '@mui/icons-material';
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 
 function SideNav() {
+    const navigate = useNavigate();
+
+    const handleLogOut = () => {
+        localStorage.removeItem("LendsqrAuthDetails");
+        navigate("/login", { replace: true })
+    }
+
     return (
         <div className={styles.container}>
             <ul className={styles.list1}>
@@ -182,7 +189,7 @@ function SideNav() {
 
             <p className={styles.logOut}>
                 <RightBucketArrowIcon />
-                <span>Log Out</span>
+                <span onClick={handleLogOut}>Log Out</span>
             </p>
             <p className={styles.appVersion}>v1.2.0</p>
 
