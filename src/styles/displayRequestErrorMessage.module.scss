@@ -4,9 +4,10 @@
   justify-content: center;
   align-items: center;
   row-gap: 10px;
-  color: $primary-color;
+  color: $blacklist-color;
 
   span {
     font-size: $text-x-lg;
+    font-weight: 600;
   }
 }

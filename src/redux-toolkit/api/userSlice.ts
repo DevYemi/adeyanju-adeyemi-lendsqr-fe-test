@@ -9,7 +9,7 @@ const extendedApiSlice = apiSlice.injectEndpoints({
             transformResponse: (result, meta, arg) => result as userRequestResultTypes[]
         }),
         getUserById: builder.query({
-            query: (userId: string) => `/users/${userId}`,
+            query: (userId: string | undefined) => `/users/${userId}`,
             transformResponse: (result, meta, arg) => result as userRequestResultTypes
         })
     })

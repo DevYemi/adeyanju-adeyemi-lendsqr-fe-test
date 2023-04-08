@@ -67,6 +67,10 @@
           padding: 1em 2.5em;
           align-items: center;
 
+          &:global.MuiAvatar-root {
+            padding: 0px;
+          }
+
           &.userTier {
             border-left: 2px solid $primary-light-color;
             border-right: 2px solid $primary-light-color;
@@ -208,6 +212,7 @@
                 }
                 p:last-child {
                   font-weight: 700;
+                  word-wrap: break-word;
                 }
               }
             }

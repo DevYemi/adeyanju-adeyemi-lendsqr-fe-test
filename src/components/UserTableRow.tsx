@@ -29,11 +29,11 @@ function UserTableRow({ styles, user }: propTypes) {
     };
     return (
         <tr>
-            <td onClick={() => navigate(`${"1"}`)} className={styles.cellOrganisation}>{user.orgName}</td>
-            <td onClick={() => navigate(`${"1"}`)} className={styles.cellUsername}>{user.email}</td>
-            <td onClick={() => navigate(`${"1"}`)} className={styles.cellEmail}>{user.email}</td>
-            <td onClick={() => navigate(`${"1"}`)} className={styles.cellPhone}>{user.phoneNumber}</td>
-            <td onClick={() => navigate(`${"1"}`)} className={styles.cellDate}>{user.createdAt}</td>
+            <td onClick={() => navigate(`${user.id}`)} className={styles.cellOrganisation}>{user.orgName}</td>
+            <td onClick={() => navigate(`${user.id}`)} className={styles.cellUsername}>{user.email}</td>
+            <td onClick={() => navigate(`${user.id}`)} className={styles.cellEmail}>{user.email}</td>
+            <td onClick={() => navigate(`${user.id}`)} className={styles.cellPhone}>{user.phoneNumber}</td>
+            <td onClick={() => navigate(`${user.id}`)} className={styles.cellDate}>{user.createdAt}</td>
             <td className={styles.cellStatus}><span className={styles.statusInactive}>inactive</span></td>
             <td className={styles.cellMore}>
                 <div>
