@@ -1,9 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import styles from "@/styles/header.module.scss"
 import companyLogo from "@/assets/imgs/logo.svg"
 import avatarImg from "@/assets/imgs/avatar.png"
-import { BellIcon, ArrowDownIcon } from './icons'
-import { MoreVert as EllipsisVerticalIcon, Search as MagnifyingGlassIcon } from '@mui/icons-material';
+import { ArrowDownIcon } from './icons'
+import {
+    MoreVert as EllipsisVerticalIcon,
+    Search as MagnifyingGlassIcon,
+    NotificationsNoneRounded as BellIcon
+} from '@mui/icons-material';
 import gsap from "gsap"
 import { useAppSelector } from '@/redux-toolkit/hooks'
 import { useDispatch } from 'react-redux'
@@ -46,8 +50,6 @@ function Header() {
                     scale: 1
                 })
         }
-
-        dispatch(toggleSideNavVisibility(shouldOpen))
     }
 
     const displayHeaderContent = (e: React.MouseEvent<HTMLElement>, dropMenu: HTMLElement | null) => {
@@ -100,6 +102,10 @@ function Header() {
     }
 
     useEffect(() => {
+        animateHamburger(isSideNavOpen)
+    }, [isSideNavOpen])
+
+    useEffect(() => {
         const closeAllDropDownMenu = (e: any) => {
             if (searchBoxRef.current?.classList.contains("opened")) {
                 const trigger = document.querySelector("[data-search-box-trigger]")
@@ -144,7 +150,7 @@ function Header() {
                 <div
                     id='Nav-hamburger'
                     className={styles.NavHamburger}
-                    onClick={() => animateHamburger(!isSideNavOpen)}>
+                    onClick={() => dispatch(toggleSideNavVisibility(!isSideNavOpen))}>
                     <span />
                     <span />
                     <span />
@@ -156,7 +162,7 @@ function Header() {
             <section ref={sec3Ref} className={`${styles.sec3}`}>
                 <Link to={"#"}>Docs</Link>
                 <span className={styles.bellIcon}>
-                    <BellIcon />
+                    <BellIcon sx={{ fontSize: "2em" }} />
                     <small>Notification</small>
                 </span>
 

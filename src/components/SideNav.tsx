@@ -24,9 +24,12 @@ import {
 } from './icons'
 import { KeyboardArrowDownRounded } from '@mui/icons-material';
 import { NavLink, useNavigate } from "react-router-dom"
+import { toggleSideNavVisibility } from '@/redux-toolkit/features/sideNavVisibility'
+import { useDispatch } from 'react-redux';
 
 function SideNav() {
     const navigate = useNavigate();
+    const dispatch = useDispatch()
 
     const handleLogOut = () => {
         localStorage.removeItem("LendsqrAuthDetails");
@@ -34,7 +37,7 @@ function SideNav() {
     }
 
     return (
-        <div className={styles.container}>
+        <div onClick={() => dispatch(toggleSideNavVisibility(false))} className={styles.container}>
             <ul className={styles.list1}>
                 <li>
                     <NavLink to={"#"}>
