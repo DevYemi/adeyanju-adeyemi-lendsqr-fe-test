@@ -64,7 +64,7 @@ function UsersPage() {
   } else {
     return (
       userList?.length ?
-        <div className={styles.container}>
+        <div data-testid="usersPageWrapper" className={styles.container}>
           <h1>Users</h1>
           <section className={styles.sec1}>
             <div className={styles.usersContent}>

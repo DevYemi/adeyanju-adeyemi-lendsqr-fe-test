@@ -42,7 +42,7 @@ function UserTableRow({ styles, user }: propTypes) {
         navigate(`${user.id}`)
     }
     return (
-        <tr>
+        <tr data-testid="tableRowContent">
             <td onClick={onRowClick} className={styles.cellOrganisation}>{user.orgName}</td>
             <td onClick={onRowClick} className={styles.cellUsername}>{user.email}</td>
             <td onClick={onRowClick} className={styles.cellEmail}>{user.email}</td>
