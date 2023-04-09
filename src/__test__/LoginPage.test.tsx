@@ -27,6 +27,23 @@ describe("Unit tests", () => {
 
     })
 
+    it("should display error propmt when user try to Login without filling details", async () => {
+        const user = userEvent.setup()
+        const router = createMemoryRouter(createRoutesFromElements(GetRoutes()));
+
+        render(<RouterProvider router={router} />);
+
+
+        const submitBtn = await screen.findByTestId("formSubmit") as HTMLButtonElement
+
+
+        await user.click(submitBtn)
+
+        const errorPromts = await screen.findAllByTestId("loginErrorPrompt");
+
+        expect(errorPromts).toHaveLength(2)
+    })
+
     it("should route to DashboardPage after user login successfully", async () => {
         const user = userEvent.setup()
         const router = createMemoryRouter(createRoutesFromElements(GetRoutes()));
@@ -40,7 +57,6 @@ describe("Unit tests", () => {
         await user.type(emailInput, "test@gmail.com");
         await user.type(passwordInput, "testPassword");
         await user.click(submitBtn)
-        // authenticateUser()
 
         const wrapper = await screen.findByTestId("dashboardWrapper");
 

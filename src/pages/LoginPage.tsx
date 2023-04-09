@@ -67,7 +67,7 @@ function LoginPage() {
                                 onChange={(e) => setEmail({ value: e.target.value, err: null })}
                             />
                             {
-                                email.err && <small>{email.err}</small>
+                                email.err && <small data-testid="loginErrorPrompt">{email.err}</small>
                             }
 
                         </div>
@@ -83,7 +83,7 @@ function LoginPage() {
                                 <p onClick={() => setIsShowPassword(!isShowPassword)}>Show</p>
                             </div>
                             {
-                                password.err && <small>{password.err}</small>
+                                password.err && <small data-testid="loginErrorPrompt">{password.err}</small>
                             }
                         </div>
                         <p>Forgot PASSWORD?</p>
