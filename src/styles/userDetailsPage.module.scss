@@ -9,6 +9,7 @@
     column-gap: 10px;
     font-weight: 400;
     cursor: pointer;
+    width: fit-content;
 
     svg {
       transition: all 500ms ease-in-out;
@@ -81,9 +82,31 @@
             padding: 0px;
           }
 
+          &.profile,
+          &.accountBalance {
+            p:first-child {
+              font-weight: 700;
+              font-size: $text-2x-lg;
+            }
+          }
+
+          &.profile {
+            p:last-child {
+              font-size: $text-base;
+              color: $sec2-color;
+            }
+          }
+
+          &.accountBalance {
+            p:last-child {
+              font-size: $text-sm;
+            }
+          }
+
           &.userTier {
             border-left: 2px solid $primary-light-color;
             border-right: 2px solid $primary-light-color;
+            color: $sec2-color;
             p {
               display: flex;
               align-items: center;

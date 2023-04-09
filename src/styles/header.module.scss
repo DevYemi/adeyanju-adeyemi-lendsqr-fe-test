@@ -184,6 +184,10 @@
       grid-template-columns: auto auto;
       align-items: center;
 
+      button {
+        color: inherit;
+      }
+
       small {
         font-size: $text-base;
         @include screen-lg {

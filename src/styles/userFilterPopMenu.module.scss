@@ -22,6 +22,7 @@
   display: flex;
   flex-direction: column;
   row-gap: 30px;
+  color: $sec2-color;
 
   .filterContentBtnGroup {
     display: flex;
@@ -43,7 +44,6 @@
   :global .MuiFormControl-root {
     row-gap: 10px;
     label {
-      color: $primary-color;
       font-weight: 500;
     }
     .MuiInputBase-root,

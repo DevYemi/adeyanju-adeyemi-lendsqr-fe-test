@@ -79,7 +79,7 @@ function LoginPage() {
                                     className={password.err ? styles.inputError : ""}
                                     onChange={(e) => setPassword({ value: e.target.value, err: null })}
                                 />
-                                <p onClick={() => setIsShowPassword(!isShowPassword)}>Show</p>
+                                <p onClick={() => setIsShowPassword(!isShowPassword)}>{isShowPassword ? "Hide" : "Show"}</p>
                             </div>
                             {
                                 password.err && <small data-testid="loginErrorPrompt">{password.err}</small>

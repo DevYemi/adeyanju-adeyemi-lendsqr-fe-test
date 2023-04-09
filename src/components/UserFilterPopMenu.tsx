@@ -8,6 +8,7 @@ import { userRequestResultTypes } from "@/redux-toolkit/api/types";
 import { userStatusType } from "./UserTableRow";
 import { userListFilterObject } from "@/utils/filterUserList";
 import dayjs from "dayjs";
+import { useTheme } from '@mui/material/styles';
 
 interface propTypes {
     anchorEl: HTMLElement | null,
@@ -22,6 +23,7 @@ function UserFilterPopMenu({
     userList,
     handleFilterValuesChanges
 }: propTypes) {
+    const theme = useTheme()
     const [formValues, setFormValues] = useState<Record<keyof userListFilterObject, string>>({
         organisation: "",
         userName: "",
@@ -32,7 +34,7 @@ function UserFilterPopMenu({
     })
 
     const popUpOpen = Boolean(anchorEl);
-    const statusSelectItems: userStatusType = ["Inactive", "Pending", "Blacklisted"]
+    const statusSelectItems: userStatusType = ["Inactive", "Pending", "Blacklisted", "Active"]
 
     const closePopUp = () => setFiltterAnchorEl(null);
 
@@ -53,7 +55,17 @@ function UserFilterPopMenu({
     }
 
     const handleFilterButton = () => {
-        handleFilterValuesChanges(formValues);
+        if (
+            formValues.date ||
+            formValues.email ||
+            formValues.organisation ||
+            formValues.phoneNumber ||
+            // formValues.status ||
+            formValues.userName
+        ) {
+            handleFilterValuesChanges(formValues);
+        }
+
         closePopUp()
     }
 
@@ -127,7 +139,7 @@ function UserFilterPopMenu({
                         value={formValues.date || null}
                         onChange={(value) => handleFormValuChanges("date", value)}
                         slots={{
-                            openPickerIcon: (props) => (<CalendarMonthRounded {...props} />),
+                            openPickerIcon: (props) => (<CalendarMonthRounded sx={{ color: theme.palette.primary.dark }} {...props} />),
                             textField: (props) =>
                             (<FormControl fullWidth>
                                 <TextField name="date" value={""} placeholder="" {...props} />
@@ -164,7 +176,7 @@ function UserFilterPopMenu({
                     <Button
                         onClick={handleResetButton}
                         variant="outlined"
-                        color="primary">Reset</Button>
+                        sx={{ color: theme.palette.primary.dark }}>Reset</Button>
                     <Button
                         onClick={handleFilterButton}
                         variant="contained"

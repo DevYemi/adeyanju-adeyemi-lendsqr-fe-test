@@ -4,7 +4,7 @@ import { WestRounded, StarOutlineOutlined, Star } from '@mui/icons-material';
 import { Button, Avatar } from "@mui/material";
 import { UserSkeletonIcon } from "@/components/icons";
 import gsap from "gsap"
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { createDebounceFunc } from "@/utils/createDebounceFunc";
 import UserDetailsGeneral from "@/components/UserDetailsGeneral";
 import { userRequestResultTypes } from "@/redux-toolkit/api/types";
@@ -91,10 +91,10 @@ function UserDetailsPage() {
                 <section className={styles.sec3}>
                     <div className={styles.userDetailsPreview}>
                         <div className={styles.userDetailsPreviewInfo}>
-                            <Avatar src={userData.profile.avatar} sx={{ width: 100, height: 100 }}>
+                            <Avatar src={userData.profile.avatar} sx={{ width: 120, height: 120 }}>
                                 <UserSkeletonIcon />
                             </Avatar>
-                            <div>
+                            <div className={styles.profile}>
                                 <p>{`${userData.profile.firstName} ${userData.profile.lastName}`}</p>
                                 <p>{userData.accountNumber}</p>
                             </div>
@@ -106,7 +106,7 @@ function UserDetailsPage() {
                                     <StarOutlineOutlined sx={{ color: "#E9B200" }} />
                                 </p>
                             </div>
-                            <div>
+                            <div className={styles.accountBalance}>
                                 <p>₦{userData.accountBalance}</p>
                                 <p>9912345678/Providus Bank</p>
                             </div>

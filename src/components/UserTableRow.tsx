@@ -17,7 +17,7 @@ interface propTypes {
     user: userRequestResultTypes
 }
 
-export type userStatusType = ["Inactive", "Pending", "Blacklisted"]
+export type userStatusType = ["Inactive", "Pending", "Blacklisted", "Active"]
 
 function UserTableRow({ styles, user }: propTypes) {
     const navigate = useNavigate()
@@ -25,7 +25,7 @@ function UserTableRow({ styles, user }: propTypes) {
     const open = Boolean(anchorEl);
 
     const randomStatus = useMemo(() => { // create a random status value cause it wasn't provided by the api
-        const statusValues: userStatusType = ["Inactive", "Pending", "Blacklisted"];
+        const statusValues: userStatusType = ["Inactive", "Pending", "Blacklisted", "Active"];
 
         const randomIndex = Math.floor(Math.random() * statusValues.length);
         return statusValues[randomIndex]
@@ -45,11 +45,11 @@ function UserTableRow({ styles, user }: propTypes) {
     }
     return (
         <tr data-testid="tableRowContent">
-            <td data-testid="tableRowContentTd" onClick={onRowClick} className={styles.cellOrganisation}>{user.orgName}</td>
-            <td onClick={onRowClick} className={styles.cellUsername}>{user.userName}</td>
-            <td onClick={onRowClick} className={styles.cellEmail}>{user.email}</td>
-            <td onClick={onRowClick} className={styles.cellPhone}>{user.phoneNumber}</td>
-            <td onClick={onRowClick} className={styles.cellDate}>{user.createdAt}</td>
+            <td className={styles.cellOrganisation}>{user.orgName}</td>
+            <td className={styles.cellUsername}>{user.userName}</td>
+            <td className={styles.cellEmail}>{user.email}</td>
+            <td className={styles.cellPhone}>{user.phoneNumber}</td>
+            <td className={styles.cellDate}>{user.createdAt}</td>
             <td className={styles.cellStatus}><span className={styles[`status${randomStatus}`]}>{randomStatus}</span></td>
             <td className={styles.cellMore}>
                 <div>
@@ -61,7 +61,7 @@ function UserTableRow({ styles, user }: propTypes) {
                         onClose={handleClose}
                         className={styles.cellMoreDropMenu}
                     >
-                        <MenuItem onClick={handleClose}>
+                        <MenuItem data-testid="tableRowContentTd" onClick={() => { handleClose(); onRowClick() }}>
                             <VisibilityIcon />
                             <span>View Details</span>
                         </MenuItem>

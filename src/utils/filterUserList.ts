@@ -13,6 +13,7 @@ export interface userListFilterObject {
 export default function filterUserListBy(userList: userRequestResultTypes[], filterBy: userListFilterObject) {
     let filteredArray: userRequestResultTypes[] = [];
 
+
     filteredArray = userList.filter(user => {
 
         if (filterBy.organisation !== "" && filterBy.organisation !== user.orgName) {
@@ -28,12 +29,16 @@ export default function filterUserListBy(userList: userRequestResultTypes[], fil
         if (filterBy.phoneNumber !== "" && filterBy.phoneNumber !== user.phoneNumber) {
             return false
         }
+        if (filterBy.date !== "" && filterBy.date !== user.createdAt) {
+            return false
+        }
         // if (filterBy.status !== "" && filterBy.status !== user.status) {
         //    return false
 
 
         return true;
     })
+
 
     return filteredArray
 }

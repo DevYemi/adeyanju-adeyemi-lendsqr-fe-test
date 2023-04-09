@@ -79,6 +79,7 @@
     row-gap: 30px;
     overflow: hidden;
     position: relative;
+    color: $sec2-color;
     .tableWrapper {
       overflow-x: auto;
       padding: 2em 0px;
@@ -142,7 +143,6 @@
 
         tbody {
           tr {
-            cursor: pointer;
             &:last-child {
               td {
                 border-bottom: none;

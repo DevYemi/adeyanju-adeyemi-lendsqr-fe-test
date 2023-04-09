@@ -14,7 +14,7 @@
     grid-template-rows: auto auto;
     padding: 3em 6em;
     // height: fit-content;
-    background-color: $sec1-color;
+    background-color: #f9f9f9;
 
     .logo {
       width: 173px;
@@ -83,7 +83,7 @@
         }
         input {
           width: 100%;
-          border: 1px solid gray;
+          border: 2px solid #e6e7ec;
           border-radius: 5px;
           padding: 1.2em;
           font-size: $text-base;
@@ -107,6 +107,7 @@
         color: $secondary-color;
         cursor: pointer;
         font-weight: 500;
+        font-size: $text-sm;
       }
 
       button {

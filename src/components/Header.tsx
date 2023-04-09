@@ -12,6 +12,7 @@ import { useAppSelector } from '@/redux-toolkit/hooks'
 import { useDispatch } from 'react-redux'
 import { toggleSideNavVisibility } from '@/redux-toolkit/features/sideNavVisibility'
 import { Link, useNavigate } from 'react-router-dom'
+import { IconButton, Tooltip } from '@mui/material';
 
 function Header() {
     const navigate = useNavigate();
@@ -161,7 +162,12 @@ function Header() {
             <section ref={sec3Ref} className={`${styles.sec3}`}>
                 <Link to={"#"}>Docs</Link>
                 <span className={styles.bellIcon}>
-                    <BellIcon sx={{ fontSize: "2em" }} />
+                    <Tooltip title="Notification">
+                        <IconButton>
+                            <BellIcon sx={{ fontSize: "1.2em" }} />
+                        </IconButton>
+                    </Tooltip>
+
                     <small>Notification</small>
                 </span>
 
