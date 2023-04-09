@@ -133,9 +133,9 @@ function Header() {
     return (
         <div className={styles.container}>
             <section className={styles.sec1}>
-                <div className={styles.logo}>
+                <Link to={"/"} className={styles.logo}>
                     <img src={"/logo.svg"} alt="company-logo" />
-                </div>
+                </Link>
                 <div ref={searchBoxRef} className={styles.searchBox}>
                     <input placeholder='Search for anything' type="text" />
                     <span>
