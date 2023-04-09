@@ -3,7 +3,7 @@ const usersListMockedValues = [
         "createdAt": "2072-12-27T03:44:22.522Z",
         "orgName": "labore-dolor-et",
         "userName": "testUsername1",
-        "email": "Maverick.Hyatt83@gmail.com",
+        "email": "test1@gmail.com",
         "phoneNumber": "(553) 208-0727 x31321",
         "lastActiveDate": "2099-02-28T23:17:40.013Z",
         "profile": {
@@ -48,7 +48,7 @@ const usersListMockedValues = [
         "createdAt": "2089-05-21T04:15:40.501Z",
         "orgName": "accusamus-minima-repudiandae",
         "userName": "testUsername2",
-        "email": "Veronica_Shanahan93@gmail.com",
+        "email": "test2@gmail.com",
         "phoneNumber": "(543) 727-0652",
         "lastActiveDate": "2039-08-13T13:37:10.433Z",
         "profile": {

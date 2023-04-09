@@ -1,18 +1,27 @@
 import styles from "@/styles/userDetailsPage.module.scss"
-import { useNavigate } from "react-router-dom"
+import { Navigate, useNavigate, useParams } from "react-router-dom"
 import { WestRounded, StarOutlineOutlined, Star } from '@mui/icons-material';
 import { Button, Avatar } from "@mui/material";
 import { UserSkeletonIcon } from "@/components/icons";
 import gsap from "gsap"
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { createDebounceFunc } from "@/utils/createDebounceFunc";
 import UserDetailsGeneral from "@/components/UserDetailsGeneral";
 import { userRequestResultTypes } from "@/redux-toolkit/api/types";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 function UserDetailsPage() {
     const navigate = useNavigate();
+    const params = useParams()
+    const [userData, setUserData] = useState<userRequestResultTypes | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
-    const userData: userRequestResultTypes = useMemo(() => JSON.parse(localStorage.getItem("LendsqrUserDetails")!), [])
+
+
+    const naviagateBack = () => {
+        localStorage.removeItem("LendsqrUserDetails")
+        navigate(-1);
+    }
 
 
     const slideUserDetails = (clickedNav: HTMLElement) => {
@@ -36,6 +45,17 @@ function UserDetailsPage() {
             })
     }
 
+    useEffect(() => {
+        let data: userRequestResultTypes = JSON.parse(localStorage.getItem("LendsqrUserDetails")!)
+
+        if (!data || data.id !== params?.userId) return navigate("/users")
+
+        setIsLoading(false);
+        setUserData(data);
+
+
+    }, [navigate, params])
+
 
     useEffect(() => {
         // adds a resize callback on first render to correct slider offsets
@@ -51,10 +71,13 @@ function UserDetailsPage() {
 
 
 
-    if (userData) {
+    if (isLoading) {
+        return <LoadingSpinner />
+    }
+    else if (userData) {
         return (
-            <div className={styles.container}>
-                <section onClick={() => navigate(-1)} className={styles.sec1}>
+            <div data-testid="userDetailsPageWrapper" className={styles.container}>
+                <section onClick={naviagateBack} className={styles.sec1}>
                     <WestRounded />
                     <p>Back to Users</p>
                 </section>
@@ -124,11 +147,7 @@ function UserDetailsPage() {
             </div>
         )
     } else {
-        return (
-            <div>
-                Something unexpected went wrong, our engineers have been notified of the issue
-            </div>
-        )
+        return <Navigate to={"/users"} replace />
     }
 
 

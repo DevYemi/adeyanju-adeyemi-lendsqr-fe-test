@@ -9,6 +9,16 @@
     column-gap: 10px;
     font-weight: 400;
     cursor: pointer;
+
+    svg {
+      transition: all 500ms ease-in-out;
+    }
+
+    &:hover {
+      svg {
+        transform: translateX(-10px);
+      }
+    }
   }
 
   .sec2 {

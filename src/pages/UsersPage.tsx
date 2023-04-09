@@ -1,4 +1,4 @@
-import { ChangeEvent, useMemo, useState } from 'react'
+import { ChangeEvent, useEffect, useMemo, useState } from 'react'
 import styles from "@/styles/userPage.module.scss"
 import {
   FilterIcon,
@@ -53,6 +53,10 @@ function UsersPage() {
 
     return returnValue
   }, [userList, paginationUserListPerPage, paginationCurrentPage])
+
+  useEffect(() => {
+    localStorage.removeItem("LendsqrUserDetails")
+  }, [])
 
 
   if (userListIsLoading) {

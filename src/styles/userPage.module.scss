@@ -81,7 +81,7 @@
     position: relative;
     .tableWrapper {
       overflow-x: auto;
-      padding: 2em;
+      padding: 2em 0px;
       background-color: white;
       box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.09);
       border-radius: math.div($radius-base, 2);
@@ -118,73 +118,84 @@
         width: 100%;
         border-collapse: collapse;
         min-width: 1120px;
-        th {
-          text-align: left;
-          padding: 0em 1em;
-          cursor: pointer;
-          white-space: nowrap;
 
-          &:first-child {
-            padding-left: 0;
-          }
+        thead {
+          tr {
+            th {
+              text-align: left;
+              padding: 0em 1em;
+              cursor: pointer;
+              white-space: nowrap;
 
-          div {
-            display: flex;
-            align-items: center;
-            @include spacing-x(0.5em);
+              &:first-child {
+                padding-left: 2em;
+              }
+
+              div {
+                display: flex;
+                align-items: center;
+                @include spacing-x(0.5em);
+              }
+            }
           }
         }
 
-        tr {
-          cursor: pointer;
-          &:last-child {
-            td {
-              border-bottom: none;
-            }
-          }
-
-          td {
-            border-bottom: 1px solid #ddd;
-            padding: 1.5em 1em;
-            white-space: nowrap;
-
-            &:first-child {
-              padding-left: 0;
-            }
-
+        tbody {
+          tr {
+            cursor: pointer;
             &:last-child {
-              border-bottom: none;
+              td {
+                border-bottom: none;
+              }
             }
 
-            &.cellMore {
-              div {
-                position: relative;
-                > svg {
-                  cursor: pointer;
+            &:hover {
+              background-color: $primary-light-color;
+            }
+
+            td {
+              border-bottom: 1px solid #ddd;
+              padding: 1.5em 1em;
+              white-space: nowrap;
+
+              &:first-child {
+                padding-left: 2em;
+              }
+
+              &:last-child {
+                border-bottom: none;
+              }
+
+              &.cellMore {
+                div {
+                  position: relative;
+                  > svg {
+                    cursor: pointer;
+                  }
                 }
               }
-            }
 
-            > span {
-              padding: 0.5em 1em;
-              border-radius: 25px;
-              font-size: $text-base;
+              > span {
+                padding: 0.5em 1em;
+                border-radius: 25px;
+                font-size: $text-base;
 
-              &.statusInactive {
-                background-color: #f5f6f7;
-                color: $sec2-color;
-              }
-              &.statusPending {
-                background-color: #fdf8e6;
-                color: #e9b200;
-              }
-              &.statusBlacklisted {
-                background-color: #fde6ec;
-                color: $blacklist-color;
-              }
-              &.statusActive {
-                background-color: #f3fcf6;
-                color: #39cd62;
+                &.statusInactive {
+                  background-color: #f5f6f7;
+                  color: $sec2-color;
+                }
+                &.statusPending {
+                  background-color: #fdf8e6;
+                  color: #e9b200;
+                }
+                &.statusBlacklisted {
+                  background-color: #fde6ec;
+                  color: $blacklist-color;
+                }
+                &.statusActive {
+                  background-color: #f3fcf6;
+                  color: #39cd62;
+                }
               }
             }
           }

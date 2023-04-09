@@ -43,8 +43,8 @@ function UserTableRow({ styles, user }: propTypes) {
     }
     return (
         <tr data-testid="tableRowContent">
-            <td onClick={onRowClick} className={styles.cellOrganisation}>{user.orgName}</td>
-            <td onClick={onRowClick} className={styles.cellUsername}>{user.email}</td>
+            <td data-testid="tableRowContentTd" onClick={onRowClick} className={styles.cellOrganisation}>{user.orgName}</td>
+            <td onClick={onRowClick} className={styles.cellUsername}>{user.userName}</td>
             <td onClick={onRowClick} className={styles.cellEmail}>{user.email}</td>
             <td onClick={onRowClick} className={styles.cellPhone}>{user.phoneNumber}</td>
             <td onClick={onRowClick} className={styles.cellDate}>{user.createdAt}</td>
