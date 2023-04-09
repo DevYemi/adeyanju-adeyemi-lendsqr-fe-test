@@ -1,6 +1,5 @@
-import React, { FormEvent, useState } from 'react'
+import { FormEvent, useState } from 'react'
 import styles from "@/styles/loginPage.module.scss"
-import companyLogo from "@/assets/imgs/logo.svg"
 import signInIllustration from "@/assets/imgs/signIn-illus-preview.png"
 import { useNavigate } from 'react-router-dom'
 
@@ -46,7 +45,7 @@ function LoginPage() {
             <div className={styles.container}>
                 <section>
                     <div className={styles.logo}>
-                        <img src={companyLogo} alt="company-logo" />
+                        <img src={"/logo.svg"} alt="company-logo" />
                     </div>
                     <div className={styles.illusration}>
                         <img src={signInIllustration} alt="illustration" />
