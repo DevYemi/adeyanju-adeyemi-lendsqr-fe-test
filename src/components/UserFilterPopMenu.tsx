@@ -1,21 +1,78 @@
-import { Button, FormControl, InputLabel, MenuItem, Popover, Select, TextField } from "@mui/material"
-import { useState } from "react";
+import { Button, FormControl, MenuItem, Popover, TextField } from "@mui/material"
+import { useMemo, useState } from "react";
 import styles from "@/styles/userFilterPopMenu.module.scss"
-import { KeyboardArrowDownRounded, CloseRounded, CalendarMonthRounded } from '@mui/icons-material';
+import { CloseRounded, CalendarMonthRounded } from '@mui/icons-material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import CustomMuiSelectField from "./CustomMuiSelectField";
+import { userRequestResultTypes } from "@/redux-toolkit/api/types";
+import { userStatusType } from "./UserTableRow";
+import { userListFilterObject } from "@/utils/filterUserList";
+import dayjs from "dayjs";
 
 interface propTypes {
     anchorEl: HTMLElement | null,
-    setFiltterAnchorEl: React.Dispatch<React.SetStateAction<HTMLElement | null>>
+    setFiltterAnchorEl: React.Dispatch<React.SetStateAction<HTMLElement | null>>,
+    userList: userRequestResultTypes[],
+    handleFilterValuesChanges: (obj: userListFilterObject | null) => void
 }
 
-function UserFilterPopMenu({ anchorEl, setFiltterAnchorEl }: propTypes) {
-    const popUpOpen = Boolean(anchorEl);
-    const [organisation, setOrganisation] = useState("");
-    const [status, setStatus] = useState("");
+function UserFilterPopMenu({
+    anchorEl,
+    setFiltterAnchorEl,
+    userList,
+    handleFilterValuesChanges
+}: propTypes) {
+    const [formValues, setFormValues] = useState<Record<keyof userListFilterObject, string>>({
+        organisation: "",
+        userName: "",
+        email: "",
+        phoneNumber: "",
+        date: "",
+        status: ""
+    })
 
-    const closePopUp = () => setFiltterAnchorEl(null)
+    const popUpOpen = Boolean(anchorEl);
+    const statusSelectItems: userStatusType = ["Inactive", "Pending", "Blacklisted"]
+
+    const closePopUp = () => setFiltterAnchorEl(null);
+
+    const handleFormValuChanges = (name: keyof userListFilterObject, value: any) => {
+        setFormValues({ ...formValues, [name]: name === "date" ? dayjs(value).toISOString() : value })
+    }
+
+    const handleResetButton = () => {
+        handleFilterValuesChanges(null);
+        setFormValues({
+            organisation: "",
+            userName: "",
+            email: "",
+            phoneNumber: "",
+            date: "",
+            status: ""
+        })
+    }
+
+    const handleFilterButton = () => {
+        handleFilterValuesChanges(formValues);
+        closePopUp()
+    }
+
+
+    const organisationSelectItems = useMemo(() => {
+        const store: string[] = [];
+        if (userList) {
+            for (let i = 0; i < userList.length; i++) {
+                const user = userList[i];
+                if (!store.includes(user.orgName)) {
+                    store.push(user.orgName)
+                }
+            }
+        }
+        return store
+    }, [userList])
+
+
+
     return (
         <Popover
             open={popUpOpen}
@@ -32,53 +89,86 @@ function UserFilterPopMenu({ anchorEl, setFiltterAnchorEl }: propTypes) {
                     <CloseRounded />
                 </div>
                 <CustomMuiSelectField
-                    value={organisation}
+                    value={formValues?.organisation || ""}
                     label={"Organisation"}
-                    name={"Organisation"}
-                    onChange={(e) => setOrganisation(e.target.value)}
+                    name={"organisation"}
+                    onChange={(e) => handleFormValuChanges("organisation", e.target.value)}
                 >
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
+                    {organisationSelectItems.map(orgName => (<MenuItem key={orgName} value={orgName}>{orgName}</MenuItem>))}
                 </CustomMuiSelectField>
+
                 <FormControl fullWidth>
                     <label htmlFor="user-organisation-select">Username</label>
-                    <TextField id="outlined-basic" placeholder="Username" variant="outlined" />
+                    <TextField
+                        value={formValues?.userName || ""}
+                        onChange={(e) => handleFormValuChanges("userName", e.target.value)}
+                        name="userName"
+                        id="username-outlined-basic"
+                        placeholder="Username" variant="outlined"
+                    />
                 </FormControl>
+
                 <FormControl fullWidth>
                     <label htmlFor="user-organisation-select">Email</label>
-                    <TextField id="outlined-basic" placeholder="Email" variant="outlined" />
+                    <TextField
+                        value={formValues?.email || ""}
+                        onChange={(e) => handleFormValuChanges("email", e.target.value)}
+                        name="email"
+                        id="email-outlined-basic"
+                        placeholder="Email"
+                        variant="outlined"
+                    />
                 </FormControl>
+
                 <FormControl fullWidth>
                     <label htmlFor="user-organisation-select">Date</label>
                     <DatePicker
+
+                        value={formValues.date || null}
+                        onChange={(value) => handleFormValuChanges("date", value)}
                         slots={{
                             openPickerIcon: (props) => (<CalendarMonthRounded {...props} />),
                             textField: (props) =>
                             (<FormControl fullWidth>
-                                <TextField value={""} placeholder="" {...props} />
+                                <TextField name="date" value={""} placeholder="" {...props} />
                             </FormControl>)
                         }}
 
                     />
                 </FormControl>
+
                 <FormControl fullWidth>
                     <label htmlFor="user-organisation-select">Phone Number</label>
-                    <TextField id="outlined-basic" placeholder="Phone Number" variant="outlined" />
+                    <TextField
+                        value={formValues?.phoneNumber || ""}
+                        onChange={(e) => handleFormValuChanges("phoneNumber", e.target.value)}
+                        name="phoneNumber"
+                        id="phoneNumber-outlined-basic"
+                        placeholder="Phone Number"
+                        variant="outlined"
+                    />
                 </FormControl>
+
                 <CustomMuiSelectField
-                    value={status}
+                    value={formValues?.status || ""}
                     label={"Status"}
-                    name={"Status"}
-                    onChange={(e) => setStatus(e.target.value)}
+                    name="status"
+                    onChange={(e) => handleFormValuChanges("status", e.target.value)}
                 >
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
+                    {
+                        statusSelectItems.map(status => (<MenuItem key={status} value={status}>{status}</MenuItem>))
+                    }
                 </CustomMuiSelectField>
+
                 <div className={styles.filterContentBtnGroup}>
-                    <Button variant="outlined" color="primary">Reset</Button>
-                    <Button variant="contained" color="secondary">Filter</Button>
+                    <Button
+                        onClick={handleResetButton}
+                        variant="outlined"
+                        color="primary">Reset</Button>
+                    <Button
+                        onClick={handleFilterButton}
+                        variant="contained"
+                        color="secondary">Filter</Button>
                 </div>
             </div>
 

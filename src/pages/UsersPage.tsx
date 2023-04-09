@@ -19,12 +19,14 @@ import { SelectChangeEvent } from '@mui/material';
 import { useAppSelector } from '@/redux-toolkit/hooks';
 import { useDispatch } from 'react-redux';
 import { updateCurrentPage, updateUserListPerPage } from '@/redux-toolkit/features/userPageTablePagination';
+import filterUserListBy, { userListFilterObject } from '@/utils/filterUserList';
 
 
 function UsersPage() {
   const dispatch = useDispatch()
   const { paginationUserListPerPage, paginationCurrentPage } = useAppSelector(state => state.userPageTablePagination);
   const [filtterAnchorEl, setFiltterAnchorEl] = useState<null | HTMLElement>(null);
+  const [userFilterByValues, setUserFilterByValues] = useState<userListFilterObject | null>(null);
 
 
 
@@ -39,20 +41,31 @@ function UsersPage() {
     dispatch(updateCurrentPage(1))
   }
 
+  const handleFilterValuesChanges = (obj: userListFilterObject | null) => {
+    setUserFilterByValues(obj)
+  }
+
 
   const currentPaginationUserList = useMemo(() => {
-    let returnValue: userRequestResultTypes[] = [];
+    let listArray: userRequestResultTypes[] = [];
 
     if (userList?.length && paginationUserListPerPage) {
+      listArray = [...userList];
+
+      if (userFilterByValues) { // filter userList
+        listArray = filterUserListBy(listArray, userFilterByValues);
+      }
+
       const start = 0 + ((paginationCurrentPage - 1) * paginationUserListPerPage)
-      const end = Math.min(paginationCurrentPage * paginationUserListPerPage, userList?.length + 1)
+      const end = Math.min(paginationCurrentPage * paginationUserListPerPage, listArray?.length + 1)
 
 
-      returnValue = userList.slice(start, end)
+      listArray = listArray.slice(start, end)
     }
 
-    return returnValue
-  }, [userList, paginationUserListPerPage, paginationCurrentPage])
+    return listArray;
+  }, [userList, paginationUserListPerPage, paginationCurrentPage, userFilterByValues])
+
 
   useEffect(() => {
     localStorage.removeItem("LendsqrUserDetails")
@@ -150,9 +163,14 @@ function UsersPage() {
                 </tbody>
               </table>
             </div>
-            <UserFilterPopMenu anchorEl={filtterAnchorEl} setFiltterAnchorEl={setFiltterAnchorEl} />
+            <UserFilterPopMenu
+              anchorEl={filtterAnchorEl}
+              setFiltterAnchorEl={setFiltterAnchorEl}
+              userList={userList}
+              handleFilterValuesChanges={handleFilterValuesChanges}
+            />
             <UserTablePagination
-              totalUsers={userList.length}
+              totalUsers={userFilterByValues ? currentPaginationUserList.length : userList.length}
               onPaginationUserListPerPageChange={onPaginationUserListPerPageChange}
               onPaginationChange={onPaginationChange}
             />

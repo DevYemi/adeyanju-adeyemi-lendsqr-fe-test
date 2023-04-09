@@ -17,13 +17,15 @@ interface propTypes {
     user: userRequestResultTypes
 }
 
+export type userStatusType = ["Inactive", "Pending", "Blacklisted"]
+
 function UserTableRow({ styles, user }: propTypes) {
     const navigate = useNavigate()
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
 
     const randomStatus = useMemo(() => { // create a random status value cause it wasn't provided by the api
-        const statusValues = ["Inactive", "Pending", "Blacklisted"];
+        const statusValues: userStatusType = ["Inactive", "Pending", "Blacklisted"];
 
         const randomIndex = Math.floor(Math.random() * statusValues.length);
         return statusValues[randomIndex]

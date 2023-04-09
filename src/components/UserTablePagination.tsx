@@ -13,11 +13,14 @@ interface propTypes {
 function UserTablePagination({
     onPaginationUserListPerPageChange,
     totalUsers,
-    onPaginationChange }: propTypes) {
+    onPaginationChange
+}: propTypes) {
 
     const { paginationUserListPerPage, paginationInterval, paginationCurrentPage } = useAppSelector(state => state.userPageTablePagination);
+
     const paginationPageCount = useMemo(() => {
-        let value = 1
+        let value = 1;
+
         if (totalUsers) {
             value = Math.ceil(totalUsers / (paginationUserListPerPage || 1))
         }
@@ -36,6 +39,8 @@ function UserTablePagination({
         }
         return intervalArr;
     }, [totalUsers, paginationInterval])
+
+
 
     return (
         <div className={styles.container}>
