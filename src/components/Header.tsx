@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react'
 import styles from "@/styles/header.module.scss"
-import companyLogo from "@/assets/imgs/logo.svg"
 import avatarImg from "@/assets/imgs/avatar.png"
 import { ArrowDownIcon } from './icons'
 import {
@@ -134,7 +133,7 @@ function Header() {
         <div className={styles.container}>
             <section className={styles.sec1}>
                 <div className={styles.logo}>
-                    <img src={companyLogo} alt="company-logo" />
+                    <img src={"/logo.svg"} alt="company-logo" />
                 </div>
                 <div ref={searchBoxRef} className={styles.searchBox}>
                     <input placeholder='Search for anything' type="text" />
