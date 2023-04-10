@@ -39,7 +39,7 @@ function UserFilterPopMenu({
     const closePopUp = () => setFiltterAnchorEl(null);
 
     const handleFormValuChanges = (name: keyof userListFilterObject, value: any) => {
-        setFormValues({ ...formValues, [name]: name === "date" ? dayjs(value).toISOString() : value })
+        setFormValues({ ...formValues, [name]: value })
     }
 
     const handleResetButton = () => {
@@ -63,6 +63,7 @@ function UserFilterPopMenu({
             // formValues.status ||
             formValues.userName
         ) {
+            formValues.date = formValues.date ? dayjs(formValues.date).toISOString() : ""
             handleFilterValuesChanges(formValues);
         }
 
@@ -135,14 +136,13 @@ function UserFilterPopMenu({
                 <FormControl fullWidth>
                     <label htmlFor="user-organisation-select">Date</label>
                     <DatePicker
-
                         value={formValues.date || null}
                         onChange={(value) => handleFormValuChanges("date", value)}
                         slots={{
                             openPickerIcon: (props) => (<CalendarMonthRounded sx={{ color: theme.palette.primary.dark }} {...props} />),
                             textField: (props) =>
                             (<FormControl fullWidth>
-                                <TextField name="date" value={""} placeholder="" {...props} />
+                                <TextField name="date" placeholder="" {...props} />
                             </FormControl>)
                         }}
 

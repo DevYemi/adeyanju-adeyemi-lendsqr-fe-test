@@ -8,6 +8,7 @@ import {
 import { MouseEvent, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { userRequestResultTypes } from '@/redux-toolkit/api/types';
+import dayjs from "dayjs";
 
 
 // Note this component Inherits its styles from its parent component
@@ -49,7 +50,7 @@ function UserTableRow({ styles, user }: propTypes) {
             <td className={styles.cellUsername}>{user.userName}</td>
             <td className={styles.cellEmail}>{user.email}</td>
             <td className={styles.cellPhone}>{user.phoneNumber}</td>
-            <td className={styles.cellDate}>{user.createdAt}</td>
+            <td className={styles.cellDate}>{dayjs(user.createdAt).format("lll")}</td>
             <td className={styles.cellStatus}><span className={styles[`status${randomStatus}`]}>{randomStatus}</span></td>
             <td className={styles.cellMore}>
                 <div>

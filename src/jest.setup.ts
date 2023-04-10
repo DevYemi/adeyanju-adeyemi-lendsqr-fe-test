@@ -7,6 +7,17 @@ import 'whatwg-fetch';
 import { server } from '@/__test__/mocks/server'
 
 
+jest.mock('dayjs', () => {
+    const originalModule = jest.requireActual('dayjs');
+    const mockedDayjs = jest.fn(() => ({
+        format: jest.fn(),
+    }));
+    return {
+        __esModule: true,
+        ...originalModule,
+        default: mockedDayjs,
+    };
+});
 
 // Establish API mocking before all tests.
 beforeAll(() => server.listen())
